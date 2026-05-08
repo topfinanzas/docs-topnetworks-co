@@ -50,9 +50,9 @@ export default function Layout() {
 
       {/* Sidebar */}
       <div className={`fixed inset-y-0 left-0 z-50 w-64 transform border-r border-gray-200 bg-gray-50 transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="flex h-16 items-center justify-between px-6 border-b border-gray-200 bg-white">
-          <div className="flex items-center w-full py-[2px]">
-            <img src="/media/topnetworks-positivo-sinfondo.webp" alt="TopNetworks" className="w-full max-w-[180px] h-auto object-contain" />
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-white min-h-16">
+          <div className="flex items-center w-full">
+            <img src="/media/topnetworks-positivo-sinfondo.webp" alt="TopNetworks" className="w-full max-w-[180px] h-auto object-contain my-2" />
           </div>
           <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-gray-500 hover:text-gray-700">
             <X size={20} />
