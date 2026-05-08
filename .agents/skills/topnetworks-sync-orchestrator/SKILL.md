@@ -62,7 +62,7 @@ Before any deployment request:
 3. If preflight prints `AGENT_ACTION_REQUIRED`, fix the affected codebase before deployment.
 4. Only produce or run a deployment command after explicit user natural-language authorization.
 5. Ensure the approved **local** deployment preparation process synchronizes `dev`, `main`, and the repository backup branch, pushes to origin, and then returns the working tree to `dev`.
-6. Only instruct or provide the remote `deploy_update.sh` command to update the production server *after* local synchronization is pushed to origin.
+6. Only instruct or provide the remote `deploy_update.sh` command to update the production server _after_ local synchronization is pushed to origin.
 7. Never answer shell `Y/N` prompts on the user's behalf. Prefer flag-driven or orchestrator-scoped commands.
 
 ## Safety rules
@@ -110,17 +110,20 @@ When orchestrating deployments from local environments to the production server 
 - **TopFinanzas MX**: Local `topfinanzas-mx-next` -> Remote `/var/www/html/topfinanzas-mx-next`
 - **BudgetBee**: Local `budgetbee-next` -> Remote `/var/www/html/budgetbee-next`
 
-*Note: Ensure remote commands use `sudo git reset --hard HEAD` and `sudo git clean -fd` if the remote directory has unsaved changes blocking `git pull` from main.*
+_Note: Ensure remote commands use `sudo git reset --hard HEAD` and `sudo git clean -fd` if the remote directory has unsaved changes blocking `git pull` from main._
 
 ## Agentic AI Deployment Prompts
 
 You can use the following reusable prompts to instruct the orchestrator agent:
 
 ### 1. End-to-End Deployment (All Sites)
+
 > "@SyncOrchestrator Please execute an end-to-end deployment for all TopNetworks properties (US, UK, MX, BudgetBee). For each property: 1. Write the commit message to `lib/documents/commit-message.txt`, then push local `dev` to origin `main` via `bash ./scripts/git-workflow.sh "$(cat lib/documents/commit-message.txt)"`. 2. SSH into the remote host. 3. Navigate to the correctly mapped remote directory in `/var/www/html/`. 4. Hard reset remote changes if necessary. 5. Run `sudo bash ./scripts/deploy_update.sh`. Report the build status for each site."
 
 ### 2. Single-Site Deployment
+
 > "@SyncOrchestrator I have made changes to the `{{project_local_name}}` codebase. Please execute an end-to-end deployment. Write the commit message to `lib/documents/commit-message.txt` first. Ensure local changes are merged to main and pushed to origin using `bash ./scripts/git-workflow.sh "$(cat lib/documents/commit-message.txt)"`. Then SSH into the remote server, navigate to `{{project_remote_path}}`, resolve any dirty working tree states, and trigger `sudo bash ./scripts/deploy_update.sh`. Verify the Next.js compilation succeeds."
 
 ### 3. Batch Deployment (Subset of Sites)
+
 > "@SyncOrchestrator We need to deploy updates to the following subset of sites: {{site_1_local}}, {{site_2_local}}, {{site_3_local}}. For each provided site: write the commit message to `lib/documents/commit-message.txt` and synchronize the local `dev` branch to `main` by running `bash ./scripts/git-workflow.sh "$(cat lib/documents/commit-message.txt)"`, push to origin, connect to the server via SSH, map the local name to its remote `/var/www/html/` directory, clear remote changes, and execute the deploy script. Summarize the deployment outputs."

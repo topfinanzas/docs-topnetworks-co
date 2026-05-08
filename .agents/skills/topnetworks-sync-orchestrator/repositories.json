@@ -33,10 +33,7 @@
       ],
       "gitWorkflowScript": "scripts/git-workflow.sh",
       "deploymentScript": "scripts/deploy_update.sh",
-      "validationCommands": [
-        "npm run lint",
-        "npm run build"
-      ],
+      "validationCommands": ["npm run lint", "npm run build"],
       "allowlistedScripts": [
         "lint",
         "build",
@@ -74,10 +71,7 @@
       ],
       "gitWorkflowScript": "scripts/git-workflow.sh",
       "deploymentScript": "scripts/deploy_update.sh",
-      "validationCommands": [
-        "npm run lint",
-        "npm run build"
-      ],
+      "validationCommands": ["npm run lint", "npm run build"],
       "allowlistedScripts": [
         "lint",
         "build",
@@ -113,10 +107,7 @@
       ],
       "gitWorkflowScript": "scripts/git-workflow.sh",
       "deploymentScript": "scripts/deploy_update.sh",
-      "validationCommands": [
-        "npm run lint",
-        "npm run build"
-      ],
+      "validationCommands": ["npm run lint", "npm run build"],
       "allowlistedScripts": [
         "lint",
         "build",
@@ -151,10 +142,7 @@
       ],
       "gitWorkflowScript": "scripts/git-workflow.sh",
       "deploymentScript": "scripts/deploy_update.sh",
-      "validationCommands": [
-        "npm run lint",
-        "npm run build"
-      ],
+      "validationCommands": ["npm run lint", "npm run build"],
       "allowlistedScripts": [
         "lint",
         "build",

@@ -19,22 +19,23 @@ This module provides the second phase of the TopNetworks Inc. deployment strateg
 ## Usage
 
 ```typescript
-import { SyncOrchestrator } from './src/SyncOrchestrator';
+import { SyncOrchestrator } from "./src/SyncOrchestrator";
 
 const orchestrator = new SyncOrchestrator({
-    instanceName: 'topfinanzas-com',
-    zone: 'us-central1-a',
-    projectId: 'absolute-brook-452020-d5',
-    remotePath: '/var/www/html'
+  instanceName: "topfinanzas-com",
+  zone: "us-central1-a",
+  projectId: "absolute-brook-452020-d5",
+  remotePath: "/var/www/html",
 });
 
-orchestrator.executeRemoteDeployment('deploy.sh')
-    .then(() => {
-        console.log("Deployment successful!");
-    })
-    .catch((error) => {
-        console.error("Deployment failed:", error);
-    });
+orchestrator
+  .executeRemoteDeployment("deploy.sh")
+  .then(() => {
+    console.log("Deployment successful!");
+  })
+  .catch((error) => {
+    console.error("Deployment failed:", error);
+  });
 ```
 
 ## Running Tests
@@ -48,4 +49,4 @@ npm test
 
 ## Security
 
-This module follows the `api-security-hardening` standards by delegating authentication to the `gcloud` CLI environment. No secrets, keys, or passwords are kept in code or environment variables directly accessed by this skill. 
+This module follows the `api-security-hardening` standards by delegating authentication to the `gcloud` CLI environment. No secrets, keys, or passwords are kept in code or environment variables directly accessed by this skill.

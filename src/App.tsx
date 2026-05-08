@@ -1,6 +1,6 @@
-import { Routes, Route, Navigate } from 'react-router';
-import Layout from './components/Layout';
-import DocPage from './pages/DocPage';
+import { Routes, Route, Navigate } from "react-router";
+import Layout from "./components/Layout";
+import DocPage from "./pages/DocPage";
 
 function App() {
   return (

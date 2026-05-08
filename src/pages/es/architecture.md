@@ -23,13 +23,13 @@ Todo el tráfico pasa a través de **Google Cloud Platform (GCP)**:
 TopNetworks emplea un canal robusto para garantizar la calidad del tráfico:
 
 ```text
-Cloud Armor 
+Cloud Armor
    ↓
-Pub/Sub 
+Pub/Sub
    ↓
-Cloud Function (ivt-classifier) 
+Cloud Function (ivt-classifier)
    ↓
-BigQuery 
+BigQuery
    ↓
 TrafficGenius Dashboard
 ```
@@ -39,14 +39,18 @@ Este canal clasifica y visualiza el tráfico de bots, el fraude de clics y los e
 ## Sistemas Internos
 
 ### RouteGenius
+
 Motor de distribución de tráfico construido en Next.js 16.1, Supabase, Better Auth y Firebase. Utiliza algoritmos de enrutamiento probabilístico.
 
 ### Arbitrage Manager Dashboard
+
 Analíticas de campañas en tiempo real que integran la API de Meta Ads y datos de System1. Utiliza un backend FastAPI (Python) en Cloud Run, un frontend React/Vite y BigQuery.
 
 ### Generación de Contenido
+
 - **EmailGenius:** Genera emisiones de correo electrónico a través de Vertex AI (Gemini 2.5 Flash), construido sobre Next.js 15.5.
 - **Social Media Genius:** Generación de contenido para redes sociales asistido por IA utilizando canvas de Konva y Vertex AI.
 
 ### Red TopAds
+
 Red de anuncios patentada que sirve muros de ofertas. Construida con Node.js/Express y Docker/Nginx.

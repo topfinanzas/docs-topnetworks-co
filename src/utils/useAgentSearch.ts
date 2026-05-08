@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export interface AgentIndexEntry {
   title: string;
@@ -16,14 +16,14 @@ export function useAgentSearch() {
     const fetchIndex = async () => {
       setLoading(true);
       try {
-        const response = await fetch('/agent-index.json');
+        const response = await fetch("/agent-index.json");
         if (!response.ok) {
-          throw new Error('Failed to fetch agent index');
+          throw new Error("Failed to fetch agent index");
         }
         const data = await response.json();
         setIndex(data);
       } catch (err) {
-        setError(err instanceof Error ? err : new Error('Unknown error'));
+        setError(err instanceof Error ? err : new Error("Unknown error"));
       } finally {
         setLoading(false);
       }
@@ -34,14 +34,15 @@ export function useAgentSearch() {
 
   const search = (query: string, langFilter?: string) => {
     if (!query) return index;
-    
+
     const lowerQuery = query.toLowerCase();
-    return index.filter(entry => {
-      const matchesQuery = entry.title.toLowerCase().includes(lowerQuery) || 
-                           entry.description.toLowerCase().includes(lowerQuery);
-      
+    return index.filter((entry) => {
+      const matchesQuery =
+        entry.title.toLowerCase().includes(lowerQuery) ||
+        entry.description.toLowerCase().includes(lowerQuery);
+
       const matchesLang = langFilter ? entry.lang === langFilter : true;
-      
+
       return matchesQuery && matchesLang;
     });
   };

@@ -14,7 +14,7 @@ Based on remote inspection of `/var/www/html` and local `repositories.json`, the
 
 3. **TopFinanzas MX**
    - **Local Path**: `/Users/macbookpro/GitHub/topfinanzas-mx-next`
-   - **Remote Path**: `/var/www/html/topfinanzas-mx-next` 
+   - **Remote Path**: `/var/www/html/topfinanzas-mx-next`
    - **Deployment Script**: `./scripts/deploy_update.sh`
 
 4. **BudgetBee**
@@ -22,4 +22,4 @@ Based on remote inspection of `/var/www/html` and local `repositories.json`, the
    - **Remote Path**: `/var/www/html/budgetbee-next`
    - **Deployment Script**: `./scripts/deploy_update.sh`
 
-*Note: Some legacy directories (like `budgetbee` and `us`) exist on the remote server but deployment targets the Next.js directories indicated above.*
+_Note: Some legacy directories (like `budgetbee` and `us`) exist on the remote server but deployment targets the Next.js directories indicated above._

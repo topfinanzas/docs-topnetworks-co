@@ -75,14 +75,18 @@ function scriptExists(repo, scriptName) {
 }
 
 function runGitStatus(repo) {
-  const result = spawnSync("git", ["--no-pager", "-C", repo.path, "status", "--short"], {
-    encoding: "utf8",
-    stdio: ["ignore", "pipe", "pipe"]
-  });
+  const result = spawnSync(
+    "git",
+    ["--no-pager", "-C", repo.path, "status", "--short"],
+    {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
   return {
     ok: result.status === 0,
     stdout: result.stdout.trim(),
-    stderr: result.stderr.trim()
+    stderr: result.stderr.trim(),
   };
 }
 
@@ -131,7 +135,7 @@ function parityCommand() {
       rows.push({
         repo: repo.id,
         file,
-        exists: existsSync(join(root, file))
+        exists: existsSync(join(root, file)),
       });
     }
   }
@@ -161,17 +165,22 @@ function validateCommand() {
       console.log(`[execute] ${commandText}`);
       const result = spawnSync("npm", ["run", scriptName], {
         cwd: repo.path,
-        stdio: "inherit"
+        stdio: "inherit",
       });
       if (result.status !== 0) {
-        fail(`Validation failed in ${repo.id}: ${commandText}`, result.status ?? 1);
+        fail(
+          `Validation failed in ${repo.id}: ${commandText}`,
+          result.status ?? 1,
+        );
       }
     }
   }
 }
 
 function runCommand() {
-  const scriptName = rest.find((arg) => !arg.startsWith("--") && rest[rest.indexOf(arg) - 1] !== "--repo");
+  const scriptName = rest.find(
+    (arg) => !arg.startsWith("--") && rest[rest.indexOf(arg) - 1] !== "--repo",
+  );
   if (!scriptName) {
     fail("Missing script name. Example: run lint --dry-run");
   }
@@ -193,7 +202,7 @@ function runCommand() {
     console.log(`[execute] npm run ${scriptName}`);
     const result = spawnSync("npm", ["run", scriptName], {
       cwd: repo.path,
-      stdio: "inherit"
+      stdio: "inherit",
     });
     if (result.status !== 0) {
       fail(`Script failed in ${repo.id}: ${scriptName}`, result.status ?? 1);

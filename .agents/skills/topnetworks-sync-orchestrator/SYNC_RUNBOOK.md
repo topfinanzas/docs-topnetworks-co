@@ -36,6 +36,7 @@ Use this runbook to propagate shared improvements across `topfinanzas-us-next`, 
 ### SEO, GEO, and LLM indexing
 
 Usually shared:
+
 - JSON-LD rendering pattern.
 - Metadata helper shape.
 - Robots and sitemap strategy.
@@ -43,6 +44,7 @@ Usually shared:
 - Noindex handling for quiz, recommender, invite, test, and API routes.
 
 Always localize:
+
 - Canonical domain.
 - Locale and OpenGraph locale.
 - Language alternates.
@@ -54,6 +56,7 @@ Always localize:
 ### Shared components and layouts
 
 Usually shared:
+
 - Server/client component split pattern.
 - Shadcn/Radix component architecture.
 - Accessibility fixes.
@@ -61,6 +64,7 @@ Usually shared:
 - Image optimization patterns.
 
 Always localize:
+
 - Header and footer navigation labels.
 - CTA copy.
 - Product/category naming.
@@ -70,12 +74,14 @@ Always localize:
 ### Analytics, ads, and conversion tracking
 
 Usually shared:
+
 - UTM persistence architecture.
 - GTM loading order.
 - AdZep/TopAds SPA activation pattern.
 - No manual ad activation outside approved handler components.
 
 Always localize:
+
 - Domain/network codes.
 - Campaign naming prefixes.
 - Email provider lists and sender identity.
@@ -84,12 +90,14 @@ Always localize:
 ### Content and listing synchronization
 
 Usually shared:
+
 - Blog/category listing data shape.
 - Related article/sidebar patterns.
 - Search index update procedure.
 - Article semantic markup.
 
 Always localize:
+
 - Language and tone.
 - Slugs and route families.
 - Product availability.
@@ -99,11 +107,13 @@ Always localize:
 ### Dependency and script updates
 
 Usually shared:
+
 - Next.js, React, Tailwind, Radix, and TypeScript conventions.
 - Lint/build command expectations.
 - PM2 deployment script pattern.
 
 Always verify:
+
 - `package.json` script names before invoking commands.
 - Lockfile state before dependency changes.
 - Whether a repository intentionally pins a different package version.

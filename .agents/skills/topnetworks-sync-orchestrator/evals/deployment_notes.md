@@ -5,6 +5,7 @@ To prevent non-forced errors, blocking prompts, and editor popups (VIM/Nano) tha
 The commit message must be written to a temporary file (`lib/documents/commit-message.txt`) prior to calling the script.
 
 **Standardized local git-workflow command:**
+
 ```bash
 cd /Users/macbookpro/GitHub/{top-networks-inc-site} && bash ./scripts/git-workflow.sh "$(cat lib/documents/commit-message.txt)"
 ```

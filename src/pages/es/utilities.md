@@ -5,6 +5,7 @@ Los repositorios de código de TopNetworks comparten un conjunto de patrones de 
 ## Seguimiento UTM y Atribución
 
 Un componente crítico del ciclo de arbitraje es garantizar que cada sesión se rastree desde la adquisición hasta la conversión.
+
 - **Estructura UTM:** `[country]_tf_[platform]_broad`
   - Ejemplo: `us_tf_meta_broad`
 - **Funciones de Utilidad:** Funciones para analizar, persistir y agregar parámetros UTM a todos los enlaces de salida de CPA.
@@ -28,5 +29,6 @@ Un componente crítico del ciclo de arbitraje es garantizar que cada sesión se 
 ## Wrappers de Generación con IA
 
 Para herramientas internas como `EmailGenius` y `SocialMediaGenius`, encapsulamos las bibliotecas `@google/genai` y `@modelcontextprotocol/sdk`:
+
 - **Constructores de Prompt Engineering:** Utilidades para ensamblar el contexto, las reglas y las variables de entrada en prompts estructurados para Gemini 2.5 Flash.
 - **Analizadores de Respuesta (Parsers):** Funciones para validar y analizar la salida JSON estructurada de los LLMs utilizando Zod.

@@ -6,19 +6,19 @@ TopNetworks Inc. is a performance publishing company operating in the digital ad
 
 ## Documentation Sections
 
-* **[Technology Stack](/stack)** - Frontend, Backend, AI/ML, Cloud, and Ad-Tech infrastructure.
-* **[Architecture](/architecture)** - Overview of the arbitrage loop, routing, IVT detection, and core systems.
-* **[Coding Patterns & Standards](/patterns)** - Standards for React/Next.js, TypeScript, MDX, and state management.
-* **[Components & UI System](/components)** - Shared UI elements, design tokens, styling, and typography.
-* **[Shared Functions & Utilities](/utilities)** - Reusable libraries for UTM tracking, monetization, and AI generation.
-* **[Processes & Workflows](/workflows)** - Deployment pipelines, arbitrage automation, and campaign management.
-* **[Brand Identity](/brand)** - Logos, colors, fonts, and assets for TopNetworks properties.
+- **[Technology Stack](/stack)** - Frontend, Backend, AI/ML, Cloud, and Ad-Tech infrastructure.
+- **[Architecture](/architecture)** - Overview of the arbitrage loop, routing, IVT detection, and core systems.
+- **[Coding Patterns & Standards](/patterns)** - Standards for React/Next.js, TypeScript, MDX, and state management.
+- **[Components & UI System](/components)** - Shared UI elements, design tokens, styling, and typography.
+- **[Shared Functions & Utilities](/utilities)** - Reusable libraries for UTM tracking, monetization, and AI generation.
+- **[Processes & Workflows](/workflows)** - Deployment pipelines, arbitrage automation, and campaign management.
+- **[Brand Identity](/brand)** - Logos, colors, fonts, and assets for TopNetworks properties.
 
 ## Portfolio Overview
 
-* **TopFinanzas US** (`us.topfinanzas.com`)
-* **TopFinanzas UK** (`uk.topfinanzas.com`)
-* **TopFinanzas MX** (`topfinanzas.com/mx/`)
-* **MejoresFinanzas** (`mejoresfinanzas.com`)
-* **BudgetBee** (`budgetbeepro.com`)
-* **KardTrust** (`kardtrust.com`)
+- **TopFinanzas US** (`us.topfinanzas.com`)
+- **TopFinanzas UK** (`uk.topfinanzas.com`)
+- **TopFinanzas MX** (`topfinanzas.com/mx/`)
+- **MejoresFinanzas** (`mejoresfinanzas.com`)
+- **BudgetBee** (`budgetbeepro.com`)
+- **KardTrust** (`kardtrust.com`)

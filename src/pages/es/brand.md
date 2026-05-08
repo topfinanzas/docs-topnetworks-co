@@ -4,7 +4,7 @@ Esta sección cataloga todos los elementos de identidad de marca utilizados en e
 
 ## Logotipos Principales
 
-- **Logotipo de TopNetworks:** 
+- **Logotipo de TopNetworks:**
   ![Logotipo de TopNetworks](/media/topnetworks-positivo-sinfondo.webp)
 - **Logotipo de TopFinanzas (Mercado Estadounidense):**
   ![TopFinanzas US](/media/LOGO-EnglishUS-COLOR.png)
@@ -28,22 +28,26 @@ Esta sección cataloga todos los elementos de identidad de marca utilizados en e
 ## Activos de Medios
 
 Capturas de pantalla de emisiones de marketing (formato WebP):
+
 - `email_marketing_broadcast_01.webp`
-- *Otros activos de emisiones están alojados en `https://email.topfinanzas.com/images/...`*
+- _Otros activos de emisiones están alojados en `https://email.topfinanzas.com/images/...`_
 
 ## Paleta de Colores
 
 ### Colores Principales de la Marca
+
 - **Azul de la Marca (`#2563eb`):** Color principal de la marca, llamadas a la acción (CTAs), encabezados.
 - **Cian de la Marca (`#0891b2`):** Color secundario de la marca, acentos.
 - **Lima/Verde de la Marca (`#84cc16`):** Color de acento, indicadores de éxito.
 
 ### Colores Neutros
+
 - **Gris-800 (`#1f2937`):** Texto principal.
 - **Gris-600 (`#4b5563`):** Texto secundario.
 - **Gris-50 (`#f9fafb`):** Fondos muy claros.
 
 ### Colores de Estado
+
 - **Éxito (`#22c55e`):** Indicadores positivos.
 - **Advertencia (`#f59e0b`):** Mensajes de precaución.
 - **Error (`#ef4444`):** Acciones destructivas.
@@ -52,6 +56,7 @@ Capturas de pantalla de emisiones de marketing (formato WebP):
 ## Tipografía
 
 **Fuente Principal:** Poppins (Google Fonts)
+
 - Pesos: 300, 400, 500, 600, 700.
 - Alternativas: `system-ui, sans-serif`.
 

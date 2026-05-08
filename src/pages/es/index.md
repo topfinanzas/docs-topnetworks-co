@@ -6,19 +6,19 @@ TopNetworks Inc. es una empresa de publicaciones de rendimiento que opera en el 
 
 ## Secciones de Documentación
 
-* **[Stack Tecnológico](/stack)** - Infraestructura Frontend, Backend, AI/ML, Cloud y Ad-Tech.
-* **[Arquitectura](/architecture)** - Descripción general del ciclo de arbitraje, enrutamiento, detección de IVT y sistemas centrales.
-* **[Patrones de Código y Estándares](/patterns)** - Estándares para React/Next.js, TypeScript, MDX y gestión del estado.
-* **[Componentes y Sistema UI](/components)** - Elementos UI compartidos, tokens de diseño, estilo y tipografía.
-* **[Funciones y Utilidades Compartidas](/utilities)** - Bibliotecas reutilizables para seguimiento UTM, monetización y generación de IA.
-* **[Procesos y Flujos de Trabajo](/workflows)** - Tuberías de despliegue, automatización de arbitraje y gestión de campañas.
-* **[Identidad de Marca](/brand)** - Logotipos, colores, fuentes y activos para las propiedades de TopNetworks.
+- **[Stack Tecnológico](/stack)** - Infraestructura Frontend, Backend, AI/ML, Cloud y Ad-Tech.
+- **[Arquitectura](/architecture)** - Descripción general del ciclo de arbitraje, enrutamiento, detección de IVT y sistemas centrales.
+- **[Patrones de Código y Estándares](/patterns)** - Estándares para React/Next.js, TypeScript, MDX y gestión del estado.
+- **[Componentes y Sistema UI](/components)** - Elementos UI compartidos, tokens de diseño, estilo y tipografía.
+- **[Funciones y Utilidades Compartidas](/utilities)** - Bibliotecas reutilizables para seguimiento UTM, monetización y generación de IA.
+- **[Procesos y Flujos de Trabajo](/workflows)** - Tuberías de despliegue, automatización de arbitraje y gestión de campañas.
+- **[Identidad de Marca](/brand)** - Logotipos, colores, fuentes y activos para las propiedades de TopNetworks.
 
 ## Descripción de la Cartera
 
-* **TopFinanzas US** (`us.topfinanzas.com`)
-* **TopFinanzas UK** (`uk.topfinanzas.com`)
-* **TopFinanzas MX** (`topfinanzas.com/mx/`)
-* **MejoresFinanzas** (`mejoresfinanzas.com`)
-* **BudgetBee** (`budgetbeepro.com`)
-* **KardTrust** (`kardtrust.com`)
+- **TopFinanzas US** (`us.topfinanzas.com`)
+- **TopFinanzas UK** (`uk.topfinanzas.com`)
+- **TopFinanzas MX** (`topfinanzas.com/mx/`)
+- **MejoresFinanzas** (`mejoresfinanzas.com`)
+- **BudgetBee** (`budgetbeepro.com`)
+- **KardTrust** (`kardtrust.com`)

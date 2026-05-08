@@ -5,6 +5,7 @@ TopNetworks codebases share a set of common utility patterns to handle formattin
 ## UTM Tracking & Attribution
 
 A critical component of the arbitrage loop is ensuring every session is tracked from acquisition to conversion.
+
 - **UTM Structure:** `[country]_tf_[platform]_broad`
   - Example: `us_tf_meta_broad`
 - **Utility Functions:** Functions to parse, persist, and append UTM parameters to all outbound CPA links.
@@ -28,5 +29,6 @@ A critical component of the arbitrage loop is ensuring every session is tracked 
 ## AI Generation Wrappers
 
 For internal tools like `EmailGenius` and `SocialMediaGenius`, we wrap the `@google/genai` and `@modelcontextprotocol/sdk` libraries:
+
 - **Prompt Engineering Builders:** Utilities to assemble context, rules, and input variables into structured prompts for Gemini 2.5 Flash.
 - **Response Parsers:** Functions to validate and parse structured JSON output from LLMs using Zod.
