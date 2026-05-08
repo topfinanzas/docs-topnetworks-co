@@ -1,0 +1,5 @@
+          a: ({node, href, ...props}) => {
+            // Automatically prepend the language prefix to internal root-relative links
+            const targetHref = href?.startsWith('/') ? `/${lang}${href}` : href;
+            return <a href={targetHref} className="text-brand-blue-600 hover:text-brand-blue-800 underline transition-colors" {...props} />;
+          },
