@@ -1,8 +1,8 @@
-import { Outlet, NavLink } from 'react-router';
-import { Menu, X, BookOpen, Layers, Cpu, Box, Workflow, Palette, Settings } from 'lucide-react';
+import { Outlet, NavLink, useParams, useNavigate, useLocation } from 'react-router';
+import { Menu, X, BookOpen, Layers, Cpu, Box, Workflow, Palette, Settings, Globe } from 'lucide-react';
 import { useState } from 'react';
 
-const navigation = [
+const navigationEn = [
   { name: 'Introduction', href: '/', icon: BookOpen },
   { name: 'Technology Stack', href: '/stack', icon: Layers },
   { name: 'Architecture', href: '/architecture', icon: Cpu },
@@ -13,8 +13,30 @@ const navigation = [
   { name: 'Brand Identity', href: '/brand', icon: Palette },
 ];
 
+const navigationEs = [
+  { name: 'Introducción', href: '/', icon: BookOpen },
+  { name: 'Stack Tecnológico', href: '/stack', icon: Layers },
+  { name: 'Arquitectura', href: '/architecture', icon: Cpu },
+  { name: 'Patrones de Código', href: '/patterns', icon: Settings },
+  { name: 'Componentes e UI', href: '/components', icon: Box },
+  { name: 'Utilidades Compartidas', href: '/utilities', icon: Box },
+  { name: 'Flujos de Trabajo', href: '/workflows', icon: Workflow },
+  { name: 'Identidad de Marca', href: '/brand', icon: Palette },
+];
+
 export default function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { lang = 'es' } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const navigation = lang === 'en' ? navigationEn : navigationEs;
+
+  const toggleLanguage = () => {
+    const newLang = lang === 'en' ? 'es' : 'en';
+    const currentPath = location.pathname.replace(/^\/(en|es)/, '');
+    navigate(`/${newLang}${currentPath || '/'}`);
+  };
 
   return (
     <div className="flex min-h-screen w-full bg-white text-gray-800 font-sans">
@@ -29,7 +51,7 @@ export default function Layout() {
       {/* Sidebar */}
       <div className={`fixed inset-y-0 left-0 z-50 w-64 transform border-r border-gray-200 bg-gray-50 transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex h-16 items-center justify-between px-6 border-b border-gray-200 bg-white">
-          <div className="flex items-center w-full">
+          <div className="flex items-center w-full py-[2px]">
             <img src="/media/topnetworks-positivo-sinfondo.webp" alt="TopNetworks" className="w-full max-w-[180px] h-auto object-contain" />
           </div>
           <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-gray-500 hover:text-gray-700">
@@ -37,23 +59,28 @@ export default function Layout() {
           </button>
         </div>
         <nav className="p-4 space-y-1 overflow-y-auto">
-          {navigation.map((item) => (
-            <NavLink
-              key={item.name}
-              to={item.href}
-              className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-2 rounded-md transition-colors text-sm font-medium ${
-                  isActive 
-                    ? 'bg-brand-blue-50 text-brand-blue-700' 
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
-                }`
-              }
-              onClick={() => setSidebarOpen(false)}
-            >
-              <item.icon size={18} className="shrink-0" />
-              {item.name}
-            </NavLink>
-          ))}
+          {navigation.map((item) => {
+            // Treat the root item specially to avoid double slashes, e.g. /es instead of /es/
+            const targetPath = item.href === '/' ? `/${lang}` : `/${lang}${item.href}`;
+            return (
+              <NavLink
+                key={item.name}
+                to={targetPath}
+                end={item.href === '/'}
+                className={({ isActive }) =>
+                  `flex items-center gap-3 px-3 py-2 rounded-md transition-colors text-sm font-medium ${
+                    isActive 
+                      ? 'bg-brand-blue-50 text-brand-blue-700' 
+                      : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                  }`
+                }
+                onClick={() => setSidebarOpen(false)}
+              >
+                <item.icon size={18} className="shrink-0" />
+                {item.name}
+              </NavLink>
+            );
+          })}
         </nav>
       </div>
 
@@ -66,8 +93,15 @@ export default function Layout() {
           >
             <Menu size={24} />
           </button>
-          <div className="flex-1 flex items-center justify-end">
-            <img src="/media/topnetworks-positivo-sinfondo.webp" alt="TopNetworks" className="h-6" />
+          <div className="flex-1 flex items-center justify-end gap-4">
+            <button 
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 rounded-md border border-gray-200 transition-colors"
+            >
+              <Globe size={16} />
+              <span>{lang === 'en' ? 'English' : 'Español'}</span>
+            </button>
+            <img src="/media/topnetworks-positivo-sinfondo.webp" alt="TopNetworks" className="h-6 hidden sm:block" />
           </div>
         </header>
         <main className="flex-1 overflow-y-auto">

@@ -5,11 +5,12 @@ import DocPage from './pages/DocPage';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Navigate to="/es" replace />} />
+      <Route path="/:lang" element={<Layout />}>
         <Route index element={<DocPage pageId="index" />} />
         <Route path=":pageId" element={<DocPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
+      <Route path="*" element={<Navigate to="/es" replace />} />
     </Routes>
   );
 }

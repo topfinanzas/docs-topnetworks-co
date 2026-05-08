@@ -6,10 +6,10 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 
 // Pre-load all markdown files in the pages directory
-const mdFiles = import.meta.glob('./*.md', { query: '?raw', import: 'default' });
+const mdFiles = import.meta.glob('./*/*.md', { query: '?raw', import: 'default' });
 
 export default function DocPage({ pageId: propPageId }: { pageId?: string }) {
-  const { pageId: paramPageId } = useParams();
+  const { lang = 'es', pageId: paramPageId } = useParams();
   const pageId = propPageId || paramPageId || 'index';
   
   const [content, setContent] = useState<string>('');
@@ -21,7 +21,7 @@ export default function DocPage({ pageId: propPageId }: { pageId?: string }) {
       setLoading(true);
       setError(false);
       try {
-        const loadFn = mdFiles[`./${pageId}.md`];
+        const loadFn = mdFiles[`./${lang}/${pageId}.md`];
         if (!loadFn) {
           throw new Error('Not found');
         }
@@ -35,7 +35,7 @@ export default function DocPage({ pageId: propPageId }: { pageId?: string }) {
     };
 
     loadContent();
-  }, [pageId]);
+  }, [pageId, lang]);
 
   if (loading) {
     return <div className="animate-pulse flex space-x-4">
