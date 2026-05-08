@@ -27,7 +27,6 @@ TopNetworks operates with a modern, AI-first technology stack designed for perfo
 - **Firebase Auth / Google OAuth:** Secondary auth for internal operational tools.
 
 ## Ad-Tech & Monetization
-- **AdZep:** Programmatic display network; auto-activated via `AdZepNavigationHandler`.
 - **TopAds:** Proprietary ad network serving custom GPT-powered offer walls.
 - **System1:** Search arbitrage integration for contextual monetization.
 - **Google Publisher Tags:** Display ad integration.

@@ -1,57 +1,57 @@
-# Components & UI System
+# Componentes y Sistema UI
 
-TopNetworks maintains a centralized UI system built on **Tailwind CSS**, **Radix UI**, and **shadcn/ui** to ensure a visually consistent, accessible, and high-performance user experience across all properties.
+TopNetworks mantiene un sistema de interfaz de usuario centralizado construido sobre **Tailwind CSS**, **Radix UI** y **shadcn/ui** para garantizar una experiencia de usuario visualmente consistente, accesible y de alto rendimiento en todas las propiedades.
 
-## Core Design System
+## Sistema de Diseño Central
 
-The TopNetworks identity is built around a vibrant, technology-forward aesthetic.
+La identidad de TopNetworks se construye en torno a una estética vibrante y orientada a la tecnología.
 
-### Brand Palette
-- **Brand Blue:** `#2563eb` (`blue-600`) - Primary brand color, main CTAs.
-- **Brand Cyan:** `#0891b2` (`cyan-600`) - Secondary brand color, accents.
-- **Brand Lime/Green:** `#84cc16` (`lime-500` / `green-600`) - Accent color, success indicators, vibrant highlights.
+### Paleta de la Marca
+- **Azul de la Marca:** `#2563eb` (`blue-600`) - Color principal de la marca, CTAs principales.
+- **Cian de la Marca:** `#0891b2` (`cyan-600`) - Color secundario de la marca, acentos.
+- **Lima/Verde de la Marca:** `#84cc16` (`lime-500` / `green-600`) - Color de acento, indicadores de éxito, reflejos vibrantes.
 
-### Typography
-- **Primary Font:** Poppins (Google Fonts). Used for all UI text, headings, and body copy.
-  - Weights: 300 (Light), 400 (Regular), 500 (Medium), 600 (Semi-Bold), 700 (Bold).
+### Tipografía
+- **Fuente Principal:** Poppins (Google Fonts). Utilizada para todo el texto de la interfaz, encabezados y cuerpo de texto.
+  - Pesos: 300 (Ligera), 400 (Regular), 500 (Media), 600 (Semi-Negrita), 700 (Negrita).
 
-### Gradients
-The tri-color brand gradient is a signature element:
+### Degradados
+El degradado tricolor de la marca es un elemento distintivo:
 ```css
 .brand-gradient-text {
   @apply bg-gradient-to-r from-blue-600 via-cyan-600 to-lime-600 bg-clip-text text-transparent;
 }
 ```
 
-## Shared UI Architecture
+## Arquitectura de UI Compartida
 
 ### shadcn/ui & Radix UI
-We utilize `shadcn/ui` for our base component layer. This provides fully accessible, unstyled primitives (via Radix UI) that we style with Tailwind CSS.
-- Examples: Accordions, Dialogs, Dropdowns, Checkboxes, and Form controls.
-- Found in: `components/ui/`
+Utilizamos `shadcn/ui` para nuestra capa de componentes base. Esto proporciona primitivas sin estilos predeterminados y completamente accesibles (vía Radix UI) que estilizamos con Tailwind CSS.
+- Ejemplos: Acordeones, Diálogos, Menús Desplegables, Casillas de Verificación y controles de Formulario.
+- Ubicación: `components/ui/`
 
-### Forms & Validation
-- **React Hook Form:** For form state management.
-- **Zod:** For schema-based validation.
-- **Integration:** Combined via `@hookform/resolvers/zod` to ensure type-safe, accessible forms for lead capture and quizzes.
+### Formularios y Validación
+- **React Hook Form:** Para la gestión del estado de los formularios.
+- **Zod:** Para la validación basada en esquemas.
+- **Integración:** Combinados a través de `@hookform/resolvers/zod` para garantizar formularios seguros y accesibles para la captura de clientes potenciales y cuestionarios.
 
-### Icons
-- **Lucide React:** The official icon library across all TopNetworks applications.
+### Iconos
+- **Lucide React:** La biblioteca de iconos oficial en todas las aplicaciones de TopNetworks.
 
-## Component Patterns
+## Patrones de Componentes
 
-### Buttons
-Buttons utilize standard variants (primary, secondary, destructive, ghost). Primary actions often leverage the brand gradient:
+### Botones
+Los botones utilizan variantes estándar (primario, secundario, destructivo, fantasma). Las acciones primarias a menudo aprovechan el degradado de la marca:
 ```tsx
 <button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium px-4 py-2 rounded-md transition-all duration-200">
-  Apply Now
+  Aplicar Ahora
 </button>
 ```
 
-### Layouts
-- **Mobile-First:** All layouts are designed mobile-first.
-- **Containers:** Content is constrained using Tailwind's `container` class or custom max-width wrappers.
-- **Spacing:** Based on a standardized 4px/8px grid system (`gap-4`, `p-6`, etc.).
+### Diseños (Layouts)
+- **Mobile-First:** Todos los diseños están orientados primero a dispositivos móviles (mobile-first).
+- **Contenedores:** El contenido se restringe utilizando la clase `container` de Tailwind o contenedores personalizados con un ancho máximo (max-width wrappers).
+- **Espaciado:** Basado en un sistema de cuadrícula estandarizado de 4px/8px (`gap-4`, `p-6`, etc.).
 
-### Dark Mode
-Dark mode is supported via Tailwind's `dark:` modifier. Colors dynamically shift to optimized dark variants (e.g., dark blue backgrounds with near-white foregrounds).
+### Modo Oscuro
+El modo oscuro es compatible a través del modificador `dark:` de Tailwind. Los colores cambian dinámicamente a variantes oscuras optimizadas (por ejemplo, fondos azul oscuro con primeros planos casi blancos).

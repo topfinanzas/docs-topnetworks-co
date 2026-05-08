@@ -1,32 +1,32 @@
-# Shared Functions & Utilities
+# Funciones y Utilidades Compartidas
 
-TopNetworks codebases share a set of common utility patterns to handle formatting, tracking, routing, and API interactions.
+Los repositorios de código de TopNetworks comparten un conjunto de patrones de utilidad comunes para manejar el formato, el seguimiento, el enrutamiento y las interacciones con APIs.
 
-## UTM Tracking & Attribution
+## Seguimiento UTM y Atribución
 
-A critical component of the arbitrage loop is ensuring every session is tracked from acquisition to conversion.
-- **UTM Structure:** `[country]_tf_[platform]_broad`
-  - Example: `us_tf_meta_broad`
-- **Utility Functions:** Functions to parse, persist, and append UTM parameters to all outbound CPA links.
+Un componente crítico del ciclo de arbitraje es garantizar que cada sesión se rastree desde la adquisición hasta la conversión.
+- **Estructura UTM:** `[country]_tf_[platform]_broad`
+  - Ejemplo: `us_tf_meta_broad`
+- **Funciones de Utilidad:** Funciones para analizar, persistir y agregar parámetros UTM a todos los enlaces de salida de CPA.
 
-## Formatting Utilities
+## Utilidades de Formato
 
-- **Currency Formatting:** `formatCurrency(amount, currencyCode)` to handle USD, GBP, and MXN correctly based on the active locale.
-- **Date Formatting:** Standardized date formatting utilities using native `Intl.DateTimeFormat`.
-- **String Manipulation:** Utilities for generating URL-safe slugs and formatting text for UI display.
+- **Formato de Moneda:** `formatCurrency(amount, currencyCode)` para manejar correctamente USD, GBP y MXN basándose en la configuración regional activa.
+- **Formato de Fecha:** Utilidades estandarizadas para el formato de fechas utilizando la función nativa `Intl.DateTimeFormat`.
+- **Manipulación de Cadenas:** Utilidades para generar slugs compatibles con URLs y formatear texto para mostrarlo en la interfaz de usuario.
 
-## Analytics Integration
+## Integración de Analíticas
 
-- **GTM (Google Tag Manager):** Standardized dataLayer push utilities for tracking page views, lead submissions, and outbound clicks.
-- **Google Analytics 4:** Event tracking wrappers.
+- **GTM (Google Tag Manager):** Utilidades estandarizadas para enviar datos a dataLayer (dataLayer push) para realizar un seguimiento de las vistas de página, envíos de leads y clics salientes.
+- **Google Analytics 4:** Wrappers (envoltorios) para el seguimiento de eventos.
 
-## Cloud & API Utilities
+## Utilidades en la Nube y API
 
-- **Google Cloud Storage:** Utilities for generating signed URLs or reading assets directly from the `media-topfinanzas-com` bucket.
-- **BigQuery Logging:** Functions to asynchronously log IVT signals and session metrics.
+- **Google Cloud Storage:** Utilidades para generar URLs firmadas o leer activos directamente desde el bucket `media-topfinanzas-com`.
+- **Registro de BigQuery (Logging):** Funciones para registrar asincrónicamente señales de IVT (Tráfico Inválido) y métricas de sesión.
 
-## AI Generation Wrappers
+## Wrappers de Generación con IA
 
-For internal tools like `EmailGenius` and `SocialMediaGenius`, we wrap the `@google/genai` and `@modelcontextprotocol/sdk` libraries:
-- **Prompt Engineering Builders:** Utilities to assemble context, rules, and input variables into structured prompts for Gemini 2.5 Flash.
-- **Response Parsers:** Functions to validate and parse structured JSON output from LLMs using Zod.
+Para herramientas internas como `EmailGenius` y `SocialMediaGenius`, encapsulamos las bibliotecas `@google/genai` y `@modelcontextprotocol/sdk`:
+- **Constructores de Prompt Engineering:** Utilidades para ensamblar el contexto, las reglas y las variables de entrada en prompts estructurados para Gemini 2.5 Flash.
+- **Analizadores de Respuesta (Parsers):** Funciones para validar y analizar la salida JSON estructurada de los LLMs utilizando Zod.

@@ -7,7 +7,7 @@ The TopNetworks architecture is designed to support the core digital advertising
 1. **Traffic Acquisition:** Paid traffic is acquired via Meta Ads, Google Ads, or programmatic networks.
 2. **Routing:** `RouteGenius` evaluates incoming traffic based on real-time spread data and routes it to the optimal content property using probabilistic algorithms.
 3. **Engagement:** Users land on Next.js or Astro properties, designed to capture intent via SEO-optimized content, quizzes, and comparison tools.
-4. **Monetization:** `AdZep`, `TopAds`, CPA partner links, and `System1` search feeds convert the captured intent into revenue.
+4. **Monetization:** `TopAds`, CPA partner links, and `System1` search feeds convert the captured intent into revenue.
 5. **Analytics & Optimization:** Metrics (e.g., CPC, RPM, EPC, ROAS) are tracked via UTMs (`[country]_tf_[platform]_broad`). The Arbitrage Manager Dashboard constantly evaluates the Spread (`Revenue per Session - Cost per Session`) and adjusts traffic routing.
 
 ## Global Infrastructure
@@ -49,4 +49,4 @@ Real-time campaign analytics integrating Meta Ads API and System1 data. Uses a F
 - **Social Media Genius:** AI-assisted social media content generation using Konva canvas and Vertex AI.
 
 ### TopAds Network
-Proprietary ad network serving offer walls. Built with Node.js/Express and Docker/Nginx. Automatically injected via `AdZepNavigationHandler`.
+Proprietary ad network serving offer walls. Built with Node.js/Express and Docker/Nginx.

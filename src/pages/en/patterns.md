@@ -19,7 +19,7 @@ TopNetworks follows a unified set of coding standards across all Next.js, Astro,
 
 ## Performance
 - **Image Optimization:** All images must use the Next.js `<Image>` component or equivalent Astro optimization. WebP is the mandated format for all production assets served from `media-topfinanzas-com`.
-- **Core Web Vitals:** Keep LCP under 2.5s and CLS near zero. Load third-party ad scripts (e.g., AdZep, System1) asynchronously and defer non-critical Javascript.
+- **Core Web Vitals:** Keep LCP under 2.5s and CLS near zero. Load third-party ad scripts (e.g., System1) asynchronously and defer non-critical Javascript.
 
 ## Security
 - **Authentication:** Use NextAuth.js or Better Auth for secure session management.

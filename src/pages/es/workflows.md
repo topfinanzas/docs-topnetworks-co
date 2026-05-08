@@ -1,30 +1,30 @@
-# Processes & Workflows
+# Procesos y Flujos de Trabajo
 
-## Local Development Lifecycle
+## Ciclo de Vida del Desarrollo Local
 
-1. **Branching:** `dev` is the local development branch for each synchronized property. All feature work must be completed on `dev`.
-2. **Sync Orchestration:** The `topnetworks-sync-orchestrator` skill manages multi-repo parity (SEO/GEO, shared components) across the four main properties without compromising market-specific localization.
-3. **Deployment Prep:** The approved feature state is locally merged/synchronized with `main` and pushed to origin. The local working tree must always be returned to `dev` after synchronization.
+1. **Ramificación (Branching):** `dev` es la rama de desarrollo local para cada propiedad sincronizada. Todo el trabajo de nuevas características debe completarse en la rama `dev`.
+2. **Orquestación de Sincronización:** La habilidad (skill) `topnetworks-sync-orchestrator` gestiona la paridad de múltiples repositorios (SEO/GEO, componentes compartidos) en las cuatro propiedades principales sin comprometer la localización específica del mercado.
+3. **Preparación de Despliegue:** El estado aprobado de la funcionalidad se fusiona/sincroniza localmente con `main` y se sube al origen (push a origin). El árbol de trabajo local siempre debe volver a la rama `dev` después de la sincronización.
 
-## Deployment Workflow
+## Flujo de Trabajo de Despliegue
 
-1. **Local Preflight:** Run `scripts/topnetworks-deploy.mjs preflight --execute` to audit git/deploy scripts and run validation.
-2. **Git Workflow:** Run `bash ./scripts/git-workflow.sh "$(cat lib/documents/commit-message.txt)"` locally to push changes to `main`.
-3. **Remote Update:** The server-side deployment script (`scripts/deploy_update.sh`) operates strictly on the remote server (`34.45.27.247`), pulling the latest `main` changes from origin, building the app, and restarting PM2.
-   - Remote directories map to local projects:
+1. **Pre-vuelo Local (Local Preflight):** Ejecutar `scripts/topnetworks-deploy.mjs preflight --execute` para auditar los scripts de git/despliegue y ejecutar la validación.
+2. **Flujo de Trabajo Git:** Ejecutar `bash ./scripts/git-workflow.sh "$(cat lib/documents/commit-message.txt)"` localmente para enviar los cambios a la rama `main`.
+3. **Actualización Remota:** El script de despliegue en el lado del servidor (`scripts/deploy_update.sh`) opera estrictamente en el servidor remoto (`34.45.27.247`), descargando los últimos cambios de `main` desde el origen, construyendo la aplicación y reiniciando PM2.
+   - Los directorios remotos se mapean a los proyectos locales:
      - `topfinanzas-us-next` -> `/var/www/html/topfinanzas-us-next`
      - `uk-topfinanzas-com` -> `/var/www/html/uk`
      - `topfinanzas-mx-next` -> `/var/www/html/topfinanzas-mx-next`
      - `budgetbee-next` -> `/var/www/html/budgetbee-next`
 
-## Arbitrage Campaign Management
+## Gestión de Campañas de Arbitraje
 
-1. **Campaign Launch:** Paid traffic campaigns are launched targeting specific verticals (e.g., credit cards) with strict CPA limits.
-2. **Spread Monitoring:** The Arbitrage Manager Dashboard constantly evaluates the Spread (`Revenue per Session - Cost per Session`) hourly.
-3. **Optimization Actions:** If spreads compress, traffic routing is dynamically adjusted or campaigns are automatically paused to prevent negative ROI.
+1. **Lanzamiento de Campaña:** Las campañas de tráfico pago se lanzan dirigidas a verticales específicas (ej. tarjetas de crédito) con límites estrictos de CPA.
+2. **Monitoreo de Spread:** El Arbitrage Manager Dashboard evalúa constantemente el Spread (`Ingresos por Sesión - Costo por Sesión`) cada hora.
+3. **Acciones de Optimización:** Si los spreads se comprimen, el enrutamiento del tráfico se ajusta dinámicamente o las campañas se pausan automáticamente para evitar un ROI negativo.
 
-## Content & Email Generation
+## Generación de Contenido y Correo Electrónico
 
-1. **Content Briefs:** Defined using the TopNetworks playbook.
-2. **Generation:** Vertex AI generates the first draft via `EmailGenius` or `SocialMediaGenius`.
-3. **Review & Dispatch:** The content is reviewed, approved, and dispatched (e.g., via ActiveCampaign or ConvertKit).
+1. **Resúmenes de Contenido (Briefs):** Definidos utilizando el manual de jugadas (playbook) de TopNetworks.
+2. **Generación:** Vertex AI genera el primer borrador a través de `EmailGenius` o `SocialMediaGenius`.
+3. **Revisión y Despacho:** El contenido es revisado, aprobado y despachado (por ejemplo, a través de ActiveCampaign o ConvertKit).

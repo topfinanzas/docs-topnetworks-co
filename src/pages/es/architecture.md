@@ -1,26 +1,26 @@
-# Architecture
+# Arquitectura
 
-The TopNetworks architecture is designed to support the core digital advertising arbitrage loop: acquiring traffic via paid channels and efficiently converting it through high-performance content properties.
+La arquitectura de TopNetworks está diseñada para soportar el ciclo principal de arbitraje de publicidad digital: adquirir tráfico a través de canales pagos y convertirlo de manera eficiente a través de propiedades de contenido de alto rendimiento.
 
-## The Arbitrage Loop
+## El Ciclo de Arbitraje
 
-1. **Traffic Acquisition:** Paid traffic is acquired via Meta Ads, Google Ads, or programmatic networks.
-2. **Routing:** `RouteGenius` evaluates incoming traffic based on real-time spread data and routes it to the optimal content property using probabilistic algorithms.
-3. **Engagement:** Users land on Next.js or Astro properties, designed to capture intent via SEO-optimized content, quizzes, and comparison tools.
-4. **Monetization:** `AdZep`, `TopAds`, CPA partner links, and `System1` search feeds convert the captured intent into revenue.
-5. **Analytics & Optimization:** Metrics (e.g., CPC, RPM, EPC, ROAS) are tracked via UTMs (`[country]_tf_[platform]_broad`). The Arbitrage Manager Dashboard constantly evaluates the Spread (`Revenue per Session - Cost per Session`) and adjusts traffic routing.
+1. **Adquisición de Tráfico:** El tráfico pago se adquiere a través de Meta Ads, Google Ads o redes programáticas.
+2. **Enrutamiento:** `RouteGenius` evalúa el tráfico entrante basándose en datos de spread en tiempo real y lo dirige a la propiedad de contenido óptima utilizando algoritmos probabilísticos.
+3. **Interacción:** Los usuarios llegan a propiedades de Next.js o Astro, diseñadas para capturar la intención a través de contenido optimizado para SEO, cuestionarios y herramientas de comparación.
+4. **Monetización:** `TopAds`, enlaces de socios CPA y feeds de búsqueda de `System1` convierten la intención capturada en ingresos.
+5. **Analíticas y Optimización:** Las métricas (ej. CPC, RPM, EPC, ROAS) se rastrean a través de UTMs (`[country]_tf_[platform]_broad`). El Arbitrage Manager Dashboard evalúa constantemente el Spread (`Ingresos por Sesión - Costo por Sesión`) y ajusta el enrutamiento del tráfico.
 
-## Global Infrastructure
+## Infraestructura Global
 
-All traffic passes through **Google Cloud Platform (GCP)**:
+Todo el tráfico pasa a través de **Google Cloud Platform (GCP)**:
 
-- **Global Load Balancer (`35.190.2.62`):** Routes all portfolio domains.
-- **Cloud Armor (`topnetworks-armor-policy`):** Enforces DDoS protection, IP blocking, and bot mitigation upstream.
-- **Production VM (`34.45.27.247`):** Runs Ubuntu 22.04 LTS, with Apache 2.4.52 functioning as a reverse proxy. Applications are managed by PM2 on specific ports (e.g., US on 3040, UK on 3004, MX on 3030).
+- **Global Load Balancer (`35.190.2.62`):** Enruta todos los dominios de la cartera.
+- **Cloud Armor (`topnetworks-armor-policy`):** Aplica protección contra DDoS, bloqueo de IPs y mitigación de bots en el nivel superior.
+- **Máquina Virtual de Producción (`34.45.27.247`):** Ejecuta Ubuntu 22.04 LTS, con Apache 2.4.52 funcionando como proxy inverso. Las aplicaciones son gestionadas por PM2 en puertos específicos (ej. US en 3040, UK en 3004, MX en 3030).
 
-## IVT (Invalid Traffic) Pipeline
+## Canal de IVT (Tráfico Inválido)
 
-TopNetworks employs a robust pipeline to ensure traffic quality:
+TopNetworks emplea un canal robusto para garantizar la calidad del tráfico:
 
 ```text
 Cloud Armor 
@@ -34,19 +34,19 @@ BigQuery
 TrafficGenius Dashboard
 ```
 
-This pipeline classifies and visualizes bot traffic, click fraud, and invalid impression events in real-time.
+Este canal clasifica y visualiza el tráfico de bots, el fraude de clics y los eventos de impresiones inválidas en tiempo real.
 
-## Internal Systems
+## Sistemas Internos
 
 ### RouteGenius
-Traffic distribution engine built on Next.js 16.1, Supabase, Better Auth, and Firebase. Uses probabilistic routing algorithms.
+Motor de distribución de tráfico construido en Next.js 16.1, Supabase, Better Auth y Firebase. Utiliza algoritmos de enrutamiento probabilístico.
 
 ### Arbitrage Manager Dashboard
-Real-time campaign analytics integrating Meta Ads API and System1 data. Uses a FastAPI (Python) backend on Cloud Run, a React/Vite frontend, and BigQuery.
+Analíticas de campañas en tiempo real que integran la API de Meta Ads y datos de System1. Utiliza un backend FastAPI (Python) en Cloud Run, un frontend React/Vite y BigQuery.
 
-### Content Generation
-- **EmailGenius:** Generates email broadcasts via Vertex AI (Gemini 2.5 Flash), built on Next.js 15.5.
-- **Social Media Genius:** AI-assisted social media content generation using Konva canvas and Vertex AI.
+### Generación de Contenido
+- **EmailGenius:** Genera emisiones de correo electrónico a través de Vertex AI (Gemini 2.5 Flash), construido sobre Next.js 15.5.
+- **Social Media Genius:** Generación de contenido para redes sociales asistido por IA utilizando canvas de Konva y Vertex AI.
 
-### TopAds Network
-Proprietary ad network serving offer walls. Built with Node.js/Express and Docker/Nginx. Automatically injected via `AdZepNavigationHandler`.
+### Red TopAds
+Red de anuncios patentada que sirve muros de ofertas. Construida con Node.js/Express y Docker/Nginx.

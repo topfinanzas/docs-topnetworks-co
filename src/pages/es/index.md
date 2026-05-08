@@ -22,4 +22,3 @@ TopNetworks Inc. es una empresa de publicaciones de rendimiento que opera en el 
 * **MejoresFinanzas** (`mejoresfinanzas.com`)
 * **BudgetBee** (`budgetbeepro.com`)
 * **KardTrust** (`kardtrust.com`)
-* **Quiz MX** (`quizmexico.topfinanzas.com`)

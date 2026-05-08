@@ -1,55 +1,55 @@
-# Brand Identity & Assets
+# Identidad de Marca y Activos
 
-This section catalogs all brand identity elements used across the TopNetworks ecosystem.
+Esta sección cataloga todos los elementos de identidad de marca utilizados en el ecosistema de TopNetworks.
 
-## Primary Logos
+## Logotipos Principales
 
-- **TopNetworks Logo:** 
-  ![TopNetworks Logo](/media/topnetworks-positivo-sinfondo.webp)
-- **TopFinanzas Logo (US Market):**
+- **Logotipo de TopNetworks:** 
+  ![Logotipo de TopNetworks](/media/topnetworks-positivo-sinfondo.webp)
+- **Logotipo de TopFinanzas (Mercado Estadounidense):**
   ![TopFinanzas US](/media/LOGO-EnglishUS-COLOR.png)
 
-## Icons & Favicons
+## Iconos y Favicons
 
-- **Standard Favicon:** `favicon.png` (32x32)
-- **Apple Touch Icon:** `favicon.png` (180x180 recommended)
-- **Legacy Favicon:** `favicon.ico`
+- **Favicon Estándar:** `favicon.png` (32x32)
+- **Icono de Apple Touch:** `favicon.png` (se recomienda 180x180)
+- **Favicon Heredado:** `favicon.ico`
 
 <div class="flex gap-4">
   <img src="/media/favicon.png" alt="Favicon PNG" width="32" />
 </div>
 
-## Media Assets
+## Activos de Medios
 
-Marketing broadcast screenshots (WebP format):
+Capturas de pantalla de emisiones de marketing (formato WebP):
 - `email_marketing_broadcast_01.webp`
-- *Other broadcast assets are hosted at `https://email.topfinanzas.com/images/...`*
+- *Otros activos de emisiones están alojados en `https://email.topfinanzas.com/images/...`*
 
-## Color Palette
+## Paleta de Colores
 
-### Primary Brand Colors
-- **Brand Blue (`#2563eb`):** Primary brand color, CTAs, headings.
-- **Brand Cyan (`#0891b2`):** Secondary brand color, accents.
-- **Brand Lime/Green (`#84cc16`):** Accent color, success indicators.
+### Colores Principales de la Marca
+- **Azul de la Marca (`#2563eb`):** Color principal de la marca, llamadas a la acción (CTAs), encabezados.
+- **Cian de la Marca (`#0891b2`):** Color secundario de la marca, acentos.
+- **Lima/Verde de la Marca (`#84cc16`):** Color de acento, indicadores de éxito.
 
-### Neutral Colors
-- **Gray-800 (`#1f2937`):** Primary text.
-- **Gray-600 (`#4b5563`):** Secondary text.
-- **Gray-50 (`#f9fafb`):** Very light backgrounds.
+### Colores Neutros
+- **Gris-800 (`#1f2937`):** Texto principal.
+- **Gris-600 (`#4b5563`):** Texto secundario.
+- **Gris-50 (`#f9fafb`):** Fondos muy claros.
 
-### Status Colors
-- **Success (`#22c55e`):** Positive indicators.
-- **Warning (`#f59e0b`):** Caution messages.
-- **Error (`#ef4444`):** Destructive actions.
-- **Info (`#3b82f6`):** Informational messages.
+### Colores de Estado
+- **Éxito (`#22c55e`):** Indicadores positivos.
+- **Advertencia (`#f59e0b`):** Mensajes de precaución.
+- **Error (`#ef4444`):** Acciones destructivas.
+- **Información (`#3b82f6`):** Mensajes informativos.
 
-## Typography
+## Tipografía
 
-**Primary Font:** Poppins (Google Fonts)
-- Weights: 300, 400, 500, 600, 700.
-- Fallbacks: `system-ui, sans-serif`.
+**Fuente Principal:** Poppins (Google Fonts)
+- Pesos: 300, 400, 500, 600, 700.
+- Alternativas: `system-ui, sans-serif`.
 
-## Brand Guidelines
+## Pautas de la Marca
 
-- **DO:** Use official cloud-hosted versions for consistency, maintain aspect ratio, use primary brand gradient for emphasis.
-- **DON'T:** Recreate or modify logo colors, mix gradients with status colors, use multiple font families.
+- **HACER:** Utilizar versiones oficiales alojadas en la nube para mantener la consistencia, conservar la relación de aspecto, usar el degradado principal de la marca para dar énfasis.
+- **NO HACER:** Recrear o modificar los colores del logotipo, mezclar degradados con colores de estado, usar múltiples familias de fuentes.
