@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Architecture",
+    "description": "The TopNetworks architecture is designed to support the core digital advertising arbitrage loop: acquiring traffic via paid channels and efficiently converting it through high-performance content properties.",
+    "route": "/en/architecture",
+    "lang": "en"
+  },
+  {
+    "title": "Brand Identity & Assets",
+    "description": "This section catalogs all brand identity elements used across the TopNetworks ecosystem.",
+    "route": "/en/brand",
+    "lang": "en"
+  },
+  {
+    "title": "Components & UI System",
+    "description": "TopNetworks maintains a centralized UI system built on **Tailwind CSS**, **Radix UI**, and **shadcn/ui** to ensure a visually consistent, accessible, and high-performance user experience across all properties.",
+    "route": "/en/components",
+    "lang": "en"
+  },
+  {
+    "title": "TopNetworks Inc. Engineering Documentation",
+    "description": "Welcome to the TopNetworks Inc. engineering documentation. This platform serves as the single source of truth for the technology stack, architecture, shared components, and operational workflows that power the TopNetworks ecosystem.",
+    "route": "/en",
+    "lang": "en"
+  },
+  {
+    "title": "Coding Patterns & Standards",
+    "description": "TopNetworks follows a unified set of coding standards across all Next.js, Astro, and React projects to ensure maintainability, performance, and cross-team collaboration.",
+    "route": "/en/patterns",
+    "lang": "en"
+  },
+  {
+    "title": "Technology Stack",
+    "description": "TopNetworks operates with a modern, AI-first technology stack designed for performance, rapid iteration, and high-volume arbitrage traffic.",
+    "route": "/en/stack",
+    "lang": "en"
+  },
+  {
+    "title": "Shared Functions & Utilities",
+    "description": "TopNetworks codebases share a set of common utility patterns to handle formatting, tracking, routing, and API interactions.",
+    "route": "/en/utilities",
+    "lang": "en"
+  },
+  {
+    "title": "Processes & Workflows",
+    "description": "1. **Branching:** `dev` is the local development branch for each synchronized property. All feature work must be completed on `dev`.",
+    "route": "/en/workflows",
+    "lang": "en"
+  },
+  {
+    "title": "Arquitectura",
+    "description": "La arquitectura de TopNetworks está diseñada para soportar el ciclo principal de arbitraje de publicidad digital: adquirir tráfico a través de canales pagos y convertirlo de manera eficiente a través de propiedades de contenido de alto rendimiento.",
+    "route": "/es/architecture",
+    "lang": "es"
+  },
+  {
+    "title": "Identidad de Marca y Activos",
+    "description": "Esta sección cataloga todos los elementos de identidad de marca utilizados en el ecosistema de TopNetworks.",
+    "route": "/es/brand",
+    "lang": "es"
+  },
+  {
+    "title": "Componentes y Sistema UI",
+    "description": "TopNetworks mantiene un sistema de interfaz de usuario centralizado construido sobre **Tailwind CSS**, **Radix UI** y **shadcn/ui** para garantizar una experiencia de usuario visualmente consistente, accesible y de alto rendimiento en todas las propiedades.",
+    "route": "/es/components",
+    "lang": "es"
+  },
+  {
+    "title": "Documentación de Ingeniería de TopNetworks Inc.",
+    "description": "Bienvenido a la documentación de ingeniería de TopNetworks Inc. Esta plataforma sirve como la única fuente de la verdad para el stack tecnológico, la arquitectura, los componentes compartidos y los flujos de trabajo operativos que impulsan el ecosistema de TopNetworks.",
+    "route": "/es",
+    "lang": "es"
+  },
+  {
+    "title": "Patrones de Código y Estándares",
+    "description": "TopNetworks sigue un conjunto unificado de estándares de codificación en todos los proyectos de Next.js, Astro y React para garantizar la mantenibilidad, el rendimiento y la colaboración entre equipos.",
+    "route": "/es/patterns",
+    "lang": "es"
+  },
+  {
+    "title": "Stack Tecnológico",
+    "description": "TopNetworks opera con un stack tecnológico moderno, enfocado en inteligencia artificial (AI-first), diseñado para rendimiento, iteración rápida y tráfico de arbitraje de alto volumen.",
+    "route": "/es/stack",
+    "lang": "es"
+  },
+  {
+    "title": "Funciones y Utilidades Compartidas",
+    "description": "Los repositorios de código de TopNetworks comparten un conjunto de patrones de utilidad comunes para manejar el formato, el seguimiento, el enrutamiento y las interacciones con APIs.",
+    "route": "/es/utilities",
+    "lang": "es"
+  },
+  {
+    "title": "Procesos y Flujos de Trabajo",
+    "description": "1. **Ramificación (Branching):** `dev` es la rama de desarrollo local para cada propiedad sincronizada. Todo el trabajo de nuevas características debe completarse en la rama `dev`.",
+    "route": "/es/workflows",
+    "lang": "es"
+  }
+]

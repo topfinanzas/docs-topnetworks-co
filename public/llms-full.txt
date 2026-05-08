@@ -1,0 +1,776 @@
+# TopNetworks Inc. Complete Documentation Context
+
+This file contains the complete, aggregated documentation for all TopNetworks properties, designed for LLM context retrieval.
+
+
+=================================================================
+LANGUAGE: EN
+=================================================================
+
+
+--- ROUTE: /en/architecture ---
+
+# Architecture
+
+The TopNetworks architecture is designed to support the core digital advertising arbitrage loop: acquiring traffic via paid channels and efficiently converting it through high-performance content properties.
+
+## The Arbitrage Loop
+
+1. **Traffic Acquisition:** Paid traffic is acquired via Meta Ads, Google Ads, or programmatic networks.
+2. **Routing:** `RouteGenius` evaluates incoming traffic based on real-time spread data and routes it to the optimal content property using probabilistic algorithms.
+3. **Engagement:** Users land on Next.js or Astro properties, designed to capture intent via SEO-optimized content, quizzes, and comparison tools.
+4. **Monetization:** `TopAds`, CPA partner links, and `System1` search feeds convert the captured intent into revenue.
+5. **Analytics & Optimization:** Metrics (e.g., CPC, RPM, EPC, ROAS) are tracked via UTMs (`[country]_tf_[platform]_broad`). The Arbitrage Manager Dashboard constantly evaluates the Spread (`Revenue per Session - Cost per Session`) and adjusts traffic routing.
+
+## Global Infrastructure
+
+All traffic passes through **Google Cloud Platform (GCP)**:
+
+- **Global Load Balancer (`35.190.2.62`):** Routes all portfolio domains.
+- **Cloud Armor (`topnetworks-armor-policy`):** Enforces DDoS protection, IP blocking, and bot mitigation upstream.
+- **Production VM (`34.45.27.247`):** Runs Ubuntu 22.04 LTS, with Apache 2.4.52 functioning as a reverse proxy. Applications are managed by PM2 on specific ports (e.g., US on 3040, UK on 3004, MX on 3030).
+
+## IVT (Invalid Traffic) Pipeline
+
+TopNetworks employs a robust pipeline to ensure traffic quality:
+
+```text
+Cloud Armor 
+   ↓
+Pub/Sub 
+   ↓
+Cloud Function (ivt-classifier) 
+   ↓
+BigQuery 
+   ↓
+TrafficGenius Dashboard
+```
+
+This pipeline classifies and visualizes bot traffic, click fraud, and invalid impression events in real-time.
+
+## Internal Systems
+
+### RouteGenius
+Traffic distribution engine built on Next.js 16.1, Supabase, Better Auth, and Firebase. Uses probabilistic routing algorithms.
+
+### Arbitrage Manager Dashboard
+Real-time campaign analytics integrating Meta Ads API and System1 data. Uses a FastAPI (Python) backend on Cloud Run, a React/Vite frontend, and BigQuery.
+
+### Content Generation
+- **EmailGenius:** Generates email broadcasts via Vertex AI (Gemini 2.5 Flash), built on Next.js 15.5.
+- **Social Media Genius:** AI-assisted social media content generation using Konva canvas and Vertex AI.
+
+### TopAds Network
+Proprietary ad network serving offer walls. Built with Node.js/Express and Docker/Nginx.
+
+
+
+--- ROUTE: /en/brand ---
+
+# Brand Identity & Assets
+
+This section catalogs all brand identity elements used across the TopNetworks ecosystem.
+
+## Primary Logos
+
+- **TopNetworks Logo:** 
+  ![TopNetworks Logo](/media/topnetworks-positivo-sinfondo.webp)
+- **TopFinanzas Logo (US Market):**
+  ![TopFinanzas US](/media/LOGO-EnglishUS-COLOR.png)
+- **TopFinanzas Logo (MX Market):**
+  ![TopFinanzas MX](/media/LOGO-EnglishMX-COLOR.png)
+- **TopFinanzas Logo (UK Market):**
+  ![TopFinanzas UK](/media/LOGO-EnglishUK-COLOR.png)
+- **BudgetBee Logo:**
+  ![BudgetBee](/media/LOGO-BudgetBee-COLOR.png)
+
+## Icons & Favicons
+
+- **Standard Favicon:** `favicon.png` (32x32)
+- **Apple Touch Icon:** `favicon.png` (180x180 recommended)
+- **Legacy Favicon:** `favicon.ico`
+
+<div class="flex gap-4">
+  <img src="/media/favicon.png" alt="Favicon PNG" width="32" />
+</div>
+
+## Media Assets
+
+Marketing broadcast screenshots (WebP format):
+- `email_marketing_broadcast_01.webp`
+- *Other broadcast assets are hosted at `https://email.topfinanzas.com/images/...`*
+
+## Color Palette
+
+### Primary Brand Colors
+- **Brand Blue (`#2563eb`):** Primary brand color, CTAs, headings.
+- **Brand Cyan (`#0891b2`):** Secondary brand color, accents.
+- **Brand Lime/Green (`#84cc16`):** Accent color, success indicators.
+
+### Neutral Colors
+- **Gray-800 (`#1f2937`):** Primary text.
+- **Gray-600 (`#4b5563`):** Secondary text.
+- **Gray-50 (`#f9fafb`):** Very light backgrounds.
+
+### Status Colors
+- **Success (`#22c55e`):** Positive indicators.
+- **Warning (`#f59e0b`):** Caution messages.
+- **Error (`#ef4444`):** Destructive actions.
+- **Info (`#3b82f6`):** Informational messages.
+
+## Typography
+
+**Primary Font:** Poppins (Google Fonts)
+- Weights: 300, 400, 500, 600, 700.
+- Fallbacks: `system-ui, sans-serif`.
+
+## Brand Guidelines
+
+- **DO:** Use official cloud-hosted versions for consistency, maintain aspect ratio, use primary brand gradient for emphasis.
+- **DON'T:** Recreate or modify logo colors, mix gradients with status colors, use multiple font families.
+
+
+
+--- ROUTE: /en/components ---
+
+# Components & UI System
+
+TopNetworks maintains a centralized UI system built on **Tailwind CSS**, **Radix UI**, and **shadcn/ui** to ensure a visually consistent, accessible, and high-performance user experience across all properties.
+
+## Core Design System
+
+The TopNetworks identity is built around a vibrant, technology-forward aesthetic.
+
+### Brand Palette
+- **Brand Blue:** `#2563eb` (`blue-600`) - Primary brand color, main CTAs.
+- **Brand Cyan:** `#0891b2` (`cyan-600`) - Secondary brand color, accents.
+- **Brand Lime/Green:** `#84cc16` (`lime-500` / `green-600`) - Accent color, success indicators, vibrant highlights.
+
+### Typography
+- **Primary Font:** Poppins (Google Fonts). Used for all UI text, headings, and body copy.
+  - Weights: 300 (Light), 400 (Regular), 500 (Medium), 600 (Semi-Bold), 700 (Bold).
+
+### Gradients
+The tri-color brand gradient is a signature element:
+```css
+.brand-gradient-text {
+  @apply bg-gradient-to-r from-blue-600 via-cyan-600 to-lime-600 bg-clip-text text-transparent;
+}
+```
+
+## Shared UI Architecture
+
+### shadcn/ui & Radix UI
+We utilize `shadcn/ui` for our base component layer. This provides fully accessible, unstyled primitives (via Radix UI) that we style with Tailwind CSS.
+- Examples: Accordions, Dialogs, Dropdowns, Checkboxes, and Form controls.
+- Found in: `components/ui/`
+
+### Forms & Validation
+- **React Hook Form:** For form state management.
+- **Zod:** For schema-based validation.
+- **Integration:** Combined via `@hookform/resolvers/zod` to ensure type-safe, accessible forms for lead capture and quizzes.
+
+### Icons
+- **Lucide React:** The official icon library across all TopNetworks applications.
+
+## Component Patterns
+
+### Buttons
+Buttons utilize standard variants (primary, secondary, destructive, ghost). Primary actions often leverage the brand gradient:
+```tsx
+<button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium px-4 py-2 rounded-md transition-all duration-200">
+  Apply Now
+</button>
+```
+
+### Layouts
+- **Mobile-First:** All layouts are designed mobile-first.
+- **Containers:** Content is constrained using Tailwind's `container` class or custom max-width wrappers.
+- **Spacing:** Based on a standardized 4px/8px grid system (`gap-4`, `p-6`, etc.).
+
+### Dark Mode
+Dark mode is supported via Tailwind's `dark:` modifier. Colors dynamically shift to optimized dark variants (e.g., dark blue backgrounds with near-white foregrounds).
+
+
+
+--- ROUTE: /en ---
+
+# TopNetworks Inc. Engineering Documentation
+
+Welcome to the TopNetworks Inc. engineering documentation. This platform serves as the single source of truth for the technology stack, architecture, shared components, and operational workflows that power the TopNetworks ecosystem.
+
+TopNetworks Inc. is a performance publishing company operating in the digital advertising arbitrage space. We develop and manage a portfolio of financial comparison and personal finance content platforms that connect high-intent consumers with relevant advertisers across the United States, United Kingdom, Mexico, and Latin America.
+
+## Documentation Sections
+
+* **[Technology Stack](/stack)** - Frontend, Backend, AI/ML, Cloud, and Ad-Tech infrastructure.
+* **[Architecture](/architecture)** - Overview of the arbitrage loop, routing, IVT detection, and core systems.
+* **[Coding Patterns & Standards](/patterns)** - Standards for React/Next.js, TypeScript, MDX, and state management.
+* **[Components & UI System](/components)** - Shared UI elements, design tokens, styling, and typography.
+* **[Shared Functions & Utilities](/utilities)** - Reusable libraries for UTM tracking, monetization, and AI generation.
+* **[Processes & Workflows](/workflows)** - Deployment pipelines, arbitrage automation, and campaign management.
+* **[Brand Identity](/brand)** - Logos, colors, fonts, and assets for TopNetworks properties.
+
+## Portfolio Overview
+
+* **TopFinanzas US** (`us.topfinanzas.com`)
+* **TopFinanzas UK** (`uk.topfinanzas.com`)
+* **TopFinanzas MX** (`topfinanzas.com/mx/`)
+* **MejoresFinanzas** (`mejoresfinanzas.com`)
+* **BudgetBee** (`budgetbeepro.com`)
+* **KardTrust** (`kardtrust.com`)
+
+
+
+--- ROUTE: /en/patterns ---
+
+# Coding Patterns & Standards
+
+TopNetworks follows a unified set of coding standards across all Next.js, Astro, and React projects to ensure maintainability, performance, and cross-team collaboration.
+
+## Language and Syntax
+- **TypeScript First:** All new code must be written in TypeScript with `strict: true`. Avoid `any`; use strict typing and Zod schemas for validation.
+- **ES Modules:** Use modern ES module imports (`import`/`export`).
+
+## Next.js (App Router) Patterns
+- **Server Components by Default:** Minimize client-side Javascript by using React Server Components. Only add `"use client"` when state, effects, or DOM interactivity is required.
+- **Data Fetching:** Fetch data on the server when possible using Next.js `fetch` with appropriate caching strategies.
+- **Routing:** Organize pages by feature or content type under the `app` directory. Use dynamic routes `[slug]` for MDX content.
+- **MDX Content Pipeline:** Financial guides, articles, and reviews are written in MDX to interleave React components (e.g., comparison tables, calculators) within Markdown content.
+
+## State Management
+- **URL State:** Prefer the URL (query parameters) for filter state, search queries, and tab selections. This ensures shareability and better SEO.
+- **React Context:** Use React Context sparingly, typically for global themes, user authentication state (NextAuth/Better Auth), or localization configurations.
+- **Server State:** Use React Query or SWR for complex client-side data fetching and caching, though RSCs handle most initial loads.
+
+## Performance
+- **Image Optimization:** All images must use the Next.js `<Image>` component or equivalent Astro optimization. WebP is the mandated format for all production assets served from `media-topfinanzas-com`.
+- **Core Web Vitals:** Keep LCP under 2.5s and CLS near zero. Load third-party ad scripts (e.g., System1) asynchronously and defer non-critical Javascript.
+
+## Security
+- **Authentication:** Use NextAuth.js or Better Auth for secure session management.
+- **Environment Variables:** Never commit secrets. Access sensitive configurations exclusively on the server.
+
+## Code Organization
+```
+src/
+├── app/               # Next.js App Router (pages, layouts, API routes)
+├── components/        # Reusable UI components
+│   ├── ui/            # Base components (shadcn/ui, Radix)
+│   └── shared/        # Cross-feature components
+├── lib/               # Utility functions, API clients, constants
+├── hooks/             # Custom React hooks
+└── content/           # MDX files and structured data
+```
+
+
+
+--- ROUTE: /en/stack ---
+
+# Technology Stack
+
+TopNetworks operates with a modern, AI-first technology stack designed for performance, rapid iteration, and high-volume arbitrage traffic.
+
+## Frontend Frameworks
+- **Next.js 15.x–16.x (App Router):** The core framework for all primary consumer properties (`us`, `uk`, `mx`, `budgetbee`, `kardtrust`) and internal dashboards.
+- **Astro 5.x:** Used for high-performance static sites where React hydration isn't strictly necessary (`mejoresfinanzas`, corporate site).
+- **React 19.x:** Powers interactive components, internal tools, and the Arbitrage Manager Dashboard.
+
+## Languages & Styling
+- **TypeScript (Strict Mode):** Mandatory across all Next.js, Node.js, and React applications.
+- **Python:** Powers the FastAPI backend for the Arbitrage Manager Dashboard and data pipelines.
+- **Tailwind CSS v3.4/v4.x:** Utility-first CSS framework for rapid UI development.
+- **shadcn/ui & Radix UI:** Accessible, customizable, and unstyled components used to build the design system.
+
+## AI & Machine Learning
+- **Google Vertex AI (Gemini 2.5 Flash):** Primary LLM for automated content generation, email broadcast generation (`EmailGenius`), and social media copy (`SocialMediaGenius`).
+- **Google Generative AI SDK & MCP SDK:** For programmatic model access and deployment automation.
+
+## Databases & Storage
+- **PostgreSQL (pg driver):** Transactional data, authentication, email broadcast history (Cloud SQL).
+- **Google BigQuery:** Data warehouse for analytics, IVT (Invalid Traffic) classifications, and campaign performance.
+- **Supabase:** Managed PostgreSQL and authentication used in `RouteGenius` and other internal tools.
+
+## Authentication & Security
+- **NextAuth v5 / Better Auth:** Primary authentication layers for Next.js applications.
+- **Firebase Auth / Google OAuth:** Secondary auth for internal operational tools.
+
+## Ad-Tech & Monetization
+- **TopAds:** Proprietary ad network serving custom GPT-powered offer walls.
+- **System1:** Search arbitrage integration for contextual monetization.
+- **Google Publisher Tags:** Display ad integration.
+
+## Cloud Infrastructure (GCP)
+All production workloads run on Google Cloud Platform (`us-central1`).
+- **Compute Engine:** Hosts production PM2 + Apache reverse proxy.
+- **Cloud Run:** Serverless containers for FastAPI backends.
+- **Cloud Storage:** Media CDN (`media-topfinanzas-com`).
+- **Cloud Armor:** DDoS protection and bot mitigation.
+- **Pub/Sub & Cloud Functions:** Real-time pipelines (e.g., IVT classification).
+- **Cloud DNS:** Domain management.
+
+## DevOps & Tools
+- **PM2:** Node.js process management on VMs.
+- **Docker / Docker Compose:** Containerization for TopAds and local development.
+- **Git:** Feature branching model (`dev` → `main` → backup branching).
+- **Google Tag Manager & Google Analytics 4:** Analytics, tracking, and attribution.
+
+
+
+--- ROUTE: /en/utilities ---
+
+# Shared Functions & Utilities
+
+TopNetworks codebases share a set of common utility patterns to handle formatting, tracking, routing, and API interactions.
+
+## UTM Tracking & Attribution
+
+A critical component of the arbitrage loop is ensuring every session is tracked from acquisition to conversion.
+- **UTM Structure:** `[country]_tf_[platform]_broad`
+  - Example: `us_tf_meta_broad`
+- **Utility Functions:** Functions to parse, persist, and append UTM parameters to all outbound CPA links.
+
+## Formatting Utilities
+
+- **Currency Formatting:** `formatCurrency(amount, currencyCode)` to handle USD, GBP, and MXN correctly based on the active locale.
+- **Date Formatting:** Standardized date formatting utilities using native `Intl.DateTimeFormat`.
+- **String Manipulation:** Utilities for generating URL-safe slugs and formatting text for UI display.
+
+## Analytics Integration
+
+- **GTM (Google Tag Manager):** Standardized dataLayer push utilities for tracking page views, lead submissions, and outbound clicks.
+- **Google Analytics 4:** Event tracking wrappers.
+
+## Cloud & API Utilities
+
+- **Google Cloud Storage:** Utilities for generating signed URLs or reading assets directly from the `media-topfinanzas-com` bucket.
+- **BigQuery Logging:** Functions to asynchronously log IVT signals and session metrics.
+
+## AI Generation Wrappers
+
+For internal tools like `EmailGenius` and `SocialMediaGenius`, we wrap the `@google/genai` and `@modelcontextprotocol/sdk` libraries:
+- **Prompt Engineering Builders:** Utilities to assemble context, rules, and input variables into structured prompts for Gemini 2.5 Flash.
+- **Response Parsers:** Functions to validate and parse structured JSON output from LLMs using Zod.
+
+
+
+--- ROUTE: /en/workflows ---
+
+# Processes & Workflows
+
+## Local Development Lifecycle
+
+1. **Branching:** `dev` is the local development branch for each synchronized property. All feature work must be completed on `dev`.
+2. **Sync Orchestration:** The `topnetworks-sync-orchestrator` skill manages multi-repo parity (SEO/GEO, shared components) across the four main properties without compromising market-specific localization.
+3. **Deployment Prep:** The approved feature state is locally merged/synchronized with `main` and pushed to origin. The local working tree must always be returned to `dev` after synchronization.
+
+## Deployment Workflow
+
+1. **Local Preflight:** Run `scripts/topnetworks-deploy.mjs preflight --execute` to audit git/deploy scripts and run validation.
+2. **Git Workflow:** Run `bash ./scripts/git-workflow.sh "$(cat lib/documents/commit-message.txt)"` locally to push changes to `main`.
+3. **Remote Update:** The server-side deployment script (`scripts/deploy_update.sh`) operates strictly on the remote server (`34.45.27.247`), pulling the latest `main` changes from origin, building the app, and restarting PM2.
+   - Remote directories map to local projects:
+     - `topfinanzas-us-next` -> `/var/www/html/topfinanzas-us-next`
+     - `uk-topfinanzas-com` -> `/var/www/html/uk`
+     - `topfinanzas-mx-next` -> `/var/www/html/topfinanzas-mx-next`
+     - `budgetbee-next` -> `/var/www/html/budgetbee-next`
+
+## Arbitrage Campaign Management
+
+1. **Campaign Launch:** Paid traffic campaigns are launched targeting specific verticals (e.g., credit cards) with strict CPA limits.
+2. **Spread Monitoring:** The Arbitrage Manager Dashboard constantly evaluates the Spread (`Revenue per Session - Cost per Session`) hourly.
+3. **Optimization Actions:** If spreads compress, traffic routing is dynamically adjusted or campaigns are automatically paused to prevent negative ROI.
+
+## Content & Email Generation
+
+1. **Content Briefs:** Defined using the TopNetworks playbook.
+2. **Generation:** Vertex AI generates the first draft via `EmailGenius` or `SocialMediaGenius`.
+3. **Review & Dispatch:** The content is reviewed, approved, and dispatched (e.g., via ActiveCampaign or ConvertKit).
+
+
+
+=================================================================
+LANGUAGE: ES
+=================================================================
+
+
+--- ROUTE: /es/architecture ---
+
+# Arquitectura
+
+La arquitectura de TopNetworks está diseñada para soportar el ciclo principal de arbitraje de publicidad digital: adquirir tráfico a través de canales pagos y convertirlo de manera eficiente a través de propiedades de contenido de alto rendimiento.
+
+## El Ciclo de Arbitraje
+
+1. **Adquisición de Tráfico:** El tráfico pago se adquiere a través de Meta Ads, Google Ads o redes programáticas.
+2. **Enrutamiento:** `RouteGenius` evalúa el tráfico entrante basándose en datos de spread en tiempo real y lo dirige a la propiedad de contenido óptima utilizando algoritmos probabilísticos.
+3. **Interacción:** Los usuarios llegan a propiedades de Next.js o Astro, diseñadas para capturar la intención a través de contenido optimizado para SEO, cuestionarios y herramientas de comparación.
+4. **Monetización:** `TopAds`, enlaces de socios CPA y feeds de búsqueda de `System1` convierten la intención capturada en ingresos.
+5. **Analíticas y Optimización:** Las métricas (ej. CPC, RPM, EPC, ROAS) se rastrean a través de UTMs (`[country]_tf_[platform]_broad`). El Arbitrage Manager Dashboard evalúa constantemente el Spread (`Ingresos por Sesión - Costo por Sesión`) y ajusta el enrutamiento del tráfico.
+
+## Infraestructura Global
+
+Todo el tráfico pasa a través de **Google Cloud Platform (GCP)**:
+
+- **Global Load Balancer (`35.190.2.62`):** Enruta todos los dominios de la cartera.
+- **Cloud Armor (`topnetworks-armor-policy`):** Aplica protección contra DDoS, bloqueo de IPs y mitigación de bots en el nivel superior.
+- **Máquina Virtual de Producción (`34.45.27.247`):** Ejecuta Ubuntu 22.04 LTS, con Apache 2.4.52 funcionando como proxy inverso. Las aplicaciones son gestionadas por PM2 en puertos específicos (ej. US en 3040, UK en 3004, MX en 3030).
+
+## Canal de IVT (Tráfico Inválido)
+
+TopNetworks emplea un canal robusto para garantizar la calidad del tráfico:
+
+```text
+Cloud Armor 
+   ↓
+Pub/Sub 
+   ↓
+Cloud Function (ivt-classifier) 
+   ↓
+BigQuery 
+   ↓
+TrafficGenius Dashboard
+```
+
+Este canal clasifica y visualiza el tráfico de bots, el fraude de clics y los eventos de impresiones inválidas en tiempo real.
+
+## Sistemas Internos
+
+### RouteGenius
+Motor de distribución de tráfico construido en Next.js 16.1, Supabase, Better Auth y Firebase. Utiliza algoritmos de enrutamiento probabilístico.
+
+### Arbitrage Manager Dashboard
+Analíticas de campañas en tiempo real que integran la API de Meta Ads y datos de System1. Utiliza un backend FastAPI (Python) en Cloud Run, un frontend React/Vite y BigQuery.
+
+### Generación de Contenido
+- **EmailGenius:** Genera emisiones de correo electrónico a través de Vertex AI (Gemini 2.5 Flash), construido sobre Next.js 15.5.
+- **Social Media Genius:** Generación de contenido para redes sociales asistido por IA utilizando canvas de Konva y Vertex AI.
+
+### Red TopAds
+Red de anuncios patentada que sirve muros de ofertas. Construida con Node.js/Express y Docker/Nginx.
+
+
+
+--- ROUTE: /es/brand ---
+
+# Identidad de Marca y Activos
+
+Esta sección cataloga todos los elementos de identidad de marca utilizados en el ecosistema de TopNetworks.
+
+## Logotipos Principales
+
+- **Logotipo de TopNetworks:** 
+  ![Logotipo de TopNetworks](/media/topnetworks-positivo-sinfondo.webp)
+- **Logotipo de TopFinanzas (Mercado Estadounidense):**
+  ![TopFinanzas US](/media/LOGO-EnglishUS-COLOR.png)
+- **Logotipo de TopFinanzas (Mercado Mexicano):**
+  ![TopFinanzas MX](/media/LOGO-EnglishMX-COLOR.png)
+- **Logotipo de TopFinanzas (Mercado Británico):**
+  ![TopFinanzas UK](/media/LOGO-EnglishUK-COLOR.png)
+- **Logotipo de BudgetBee:**
+  ![BudgetBee](/media/LOGO-BudgetBee-COLOR.png)
+
+## Iconos y Favicons
+
+- **Favicon Estándar:** `favicon.png` (32x32)
+- **Icono de Apple Touch:** `favicon.png` (se recomienda 180x180)
+- **Favicon Heredado:** `favicon.ico`
+
+<div class="flex gap-4">
+  <img src="/media/favicon.png" alt="Favicon PNG" width="32" />
+</div>
+
+## Activos de Medios
+
+Capturas de pantalla de emisiones de marketing (formato WebP):
+- `email_marketing_broadcast_01.webp`
+- *Otros activos de emisiones están alojados en `https://email.topfinanzas.com/images/...`*
+
+## Paleta de Colores
+
+### Colores Principales de la Marca
+- **Azul de la Marca (`#2563eb`):** Color principal de la marca, llamadas a la acción (CTAs), encabezados.
+- **Cian de la Marca (`#0891b2`):** Color secundario de la marca, acentos.
+- **Lima/Verde de la Marca (`#84cc16`):** Color de acento, indicadores de éxito.
+
+### Colores Neutros
+- **Gris-800 (`#1f2937`):** Texto principal.
+- **Gris-600 (`#4b5563`):** Texto secundario.
+- **Gris-50 (`#f9fafb`):** Fondos muy claros.
+
+### Colores de Estado
+- **Éxito (`#22c55e`):** Indicadores positivos.
+- **Advertencia (`#f59e0b`):** Mensajes de precaución.
+- **Error (`#ef4444`):** Acciones destructivas.
+- **Información (`#3b82f6`):** Mensajes informativos.
+
+## Tipografía
+
+**Fuente Principal:** Poppins (Google Fonts)
+- Pesos: 300, 400, 500, 600, 700.
+- Alternativas: `system-ui, sans-serif`.
+
+## Pautas de la Marca
+
+- **HACER:** Utilizar versiones oficiales alojadas en la nube para mantener la consistencia, conservar la relación de aspecto, usar el degradado principal de la marca para dar énfasis.
+- **NO HACER:** Recrear o modificar los colores del logotipo, mezclar degradados con colores de estado, usar múltiples familias de fuentes.
+
+
+
+--- ROUTE: /es/components ---
+
+# Componentes y Sistema UI
+
+TopNetworks mantiene un sistema de interfaz de usuario centralizado construido sobre **Tailwind CSS**, **Radix UI** y **shadcn/ui** para garantizar una experiencia de usuario visualmente consistente, accesible y de alto rendimiento en todas las propiedades.
+
+## Sistema de Diseño Central
+
+La identidad de TopNetworks se construye en torno a una estética vibrante y orientada a la tecnología.
+
+### Paleta de la Marca
+- **Azul de la Marca:** `#2563eb` (`blue-600`) - Color principal de la marca, CTAs principales.
+- **Cian de la Marca:** `#0891b2` (`cyan-600`) - Color secundario de la marca, acentos.
+- **Lima/Verde de la Marca:** `#84cc16` (`lime-500` / `green-600`) - Color de acento, indicadores de éxito, reflejos vibrantes.
+
+### Tipografía
+- **Fuente Principal:** Poppins (Google Fonts). Utilizada para todo el texto de la interfaz, encabezados y cuerpo de texto.
+  - Pesos: 300 (Ligera), 400 (Regular), 500 (Media), 600 (Semi-Negrita), 700 (Negrita).
+
+### Degradados
+El degradado tricolor de la marca es un elemento distintivo:
+```css
+.brand-gradient-text {
+  @apply bg-gradient-to-r from-blue-600 via-cyan-600 to-lime-600 bg-clip-text text-transparent;
+}
+```
+
+## Arquitectura de UI Compartida
+
+### shadcn/ui & Radix UI
+Utilizamos `shadcn/ui` para nuestra capa de componentes base. Esto proporciona primitivas sin estilos predeterminados y completamente accesibles (vía Radix UI) que estilizamos con Tailwind CSS.
+- Ejemplos: Acordeones, Diálogos, Menús Desplegables, Casillas de Verificación y controles de Formulario.
+- Ubicación: `components/ui/`
+
+### Formularios y Validación
+- **React Hook Form:** Para la gestión del estado de los formularios.
+- **Zod:** Para la validación basada en esquemas.
+- **Integración:** Combinados a través de `@hookform/resolvers/zod` para garantizar formularios seguros y accesibles para la captura de clientes potenciales y cuestionarios.
+
+### Iconos
+- **Lucide React:** La biblioteca de iconos oficial en todas las aplicaciones de TopNetworks.
+
+## Patrones de Componentes
+
+### Botones
+Los botones utilizan variantes estándar (primario, secundario, destructivo, fantasma). Las acciones primarias a menudo aprovechan el degradado de la marca:
+```tsx
+<button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium px-4 py-2 rounded-md transition-all duration-200">
+  Aplicar Ahora
+</button>
+```
+
+### Diseños (Layouts)
+- **Mobile-First:** Todos los diseños están orientados primero a dispositivos móviles (mobile-first).
+- **Contenedores:** El contenido se restringe utilizando la clase `container` de Tailwind o contenedores personalizados con un ancho máximo (max-width wrappers).
+- **Espaciado:** Basado en un sistema de cuadrícula estandarizado de 4px/8px (`gap-4`, `p-6`, etc.).
+
+### Modo Oscuro
+El modo oscuro es compatible a través del modificador `dark:` de Tailwind. Los colores cambian dinámicamente a variantes oscuras optimizadas (por ejemplo, fondos azul oscuro con primeros planos casi blancos).
+
+
+
+--- ROUTE: /es ---
+
+# Documentación de Ingeniería de TopNetworks Inc.
+
+Bienvenido a la documentación de ingeniería de TopNetworks Inc. Esta plataforma sirve como la única fuente de la verdad para el stack tecnológico, la arquitectura, los componentes compartidos y los flujos de trabajo operativos que impulsan el ecosistema de TopNetworks.
+
+TopNetworks Inc. es una empresa de publicaciones de rendimiento que opera en el espacio de arbitraje de publicidad digital. Desarrollamos y administramos una cartera de plataformas de contenido de finanzas personales y comparación financiera que conectan a los consumidores de alta intención con anunciantes relevantes en los Estados Unidos, el Reino Unido, México y América Latina.
+
+## Secciones de Documentación
+
+* **[Stack Tecnológico](/stack)** - Infraestructura Frontend, Backend, AI/ML, Cloud y Ad-Tech.
+* **[Arquitectura](/architecture)** - Descripción general del ciclo de arbitraje, enrutamiento, detección de IVT y sistemas centrales.
+* **[Patrones de Código y Estándares](/patterns)** - Estándares para React/Next.js, TypeScript, MDX y gestión del estado.
+* **[Componentes y Sistema UI](/components)** - Elementos UI compartidos, tokens de diseño, estilo y tipografía.
+* **[Funciones y Utilidades Compartidas](/utilities)** - Bibliotecas reutilizables para seguimiento UTM, monetización y generación de IA.
+* **[Procesos y Flujos de Trabajo](/workflows)** - Tuberías de despliegue, automatización de arbitraje y gestión de campañas.
+* **[Identidad de Marca](/brand)** - Logotipos, colores, fuentes y activos para las propiedades de TopNetworks.
+
+## Descripción de la Cartera
+
+* **TopFinanzas US** (`us.topfinanzas.com`)
+* **TopFinanzas UK** (`uk.topfinanzas.com`)
+* **TopFinanzas MX** (`topfinanzas.com/mx/`)
+* **MejoresFinanzas** (`mejoresfinanzas.com`)
+* **BudgetBee** (`budgetbeepro.com`)
+* **KardTrust** (`kardtrust.com`)
+
+
+
+--- ROUTE: /es/patterns ---
+
+# Patrones de Código y Estándares
+
+TopNetworks sigue un conjunto unificado de estándares de codificación en todos los proyectos de Next.js, Astro y React para garantizar la mantenibilidad, el rendimiento y la colaboración entre equipos.
+
+## Lenguaje y Sintaxis
+- **TypeScript Primero:** Todo el código nuevo debe escribirse en TypeScript con `strict: true`. Evitar el uso de `any`; utilizar tipado estricto y esquemas Zod para la validación.
+- **ES Modules:** Utilizar importaciones modernas de ES modules (`import`/`export`).
+
+## Patrones en Next.js (App Router)
+- **Componentes de Servidor por Defecto:** Minimizar el uso de JavaScript del lado del cliente utilizando React Server Components. Solo agregar `"use client"` cuando se requiera estado, efectos o interactividad en el DOM.
+- **Recuperación de Datos:** Recuperar datos en el servidor siempre que sea posible utilizando `fetch` de Next.js con las estrategias de almacenamiento en caché adecuadas.
+- **Enrutamiento:** Organizar las páginas por funcionalidad o tipo de contenido dentro del directorio `app`. Utilizar rutas dinámicas `[slug]` para el contenido MDX.
+- **Pipeline de Contenido MDX:** Las guías financieras, los artículos y las reseñas se escriben en MDX para intercalar componentes de React (ej. tablas comparativas, calculadoras) dentro del contenido en Markdown.
+
+## Gestión del Estado
+- **Estado en la URL:** Preferir la URL (parámetros de consulta) para el estado de los filtros, búsquedas y selección de pestañas. Esto garantiza la capacidad de compartir el enlace y mejora el SEO.
+- **React Context:** Usar React Context con moderación, típicamente para temas globales, estado de autenticación de usuario (NextAuth/Better Auth) o configuraciones de localización.
+- **Estado del Servidor:** Utilizar React Query o SWR para recuperaciones complejas de datos en el cliente y almacenamiento en caché, aunque los Server Components manejan la mayoría de las cargas iniciales.
+
+## Rendimiento
+- **Optimización de Imágenes:** Todas las imágenes deben utilizar el componente `<Image>` de Next.js o la optimización equivalente de Astro. WebP es el formato obligatorio para todos los activos en producción servidos desde `media-topfinanzas-com`.
+- **Core Web Vitals:** Mantener el LCP por debajo de 2.5s y el CLS cerca de cero. Cargar los scripts de anuncios de terceros (ej. System1) de forma asincrónica y aplazar el Javascript no crítico.
+
+## Seguridad
+- **Autenticación:** Utilizar NextAuth.js o Better Auth para una gestión segura de las sesiones.
+- **Variables de Entorno:** Nunca confirmar secretos en el repositorio (commits). Acceder a configuraciones sensibles exclusivamente en el servidor.
+
+## Organización del Código
+```
+src/
+├── app/               # Next.js App Router (páginas, layouts, rutas de API)
+├── components/        # Componentes UI reutilizables
+│   ├── ui/            # Componentes base (shadcn/ui, Radix)
+│   └── shared/        # Componentes compartidos entre funcionalidades
+├── lib/               # Funciones de utilidad, clientes de API, constantes
+├── hooks/             # Hooks personalizados de React
+└── content/           # Archivos MDX y datos estructurados
+```
+
+
+
+--- ROUTE: /es/stack ---
+
+# Stack Tecnológico
+
+TopNetworks opera con un stack tecnológico moderno, enfocado en inteligencia artificial (AI-first), diseñado para rendimiento, iteración rápida y tráfico de arbitraje de alto volumen.
+
+## Frameworks Frontend
+- **Next.js 15.x–16.x (App Router):** El framework principal para todas las propiedades primarias orientadas al consumidor (`us`, `uk`, `mx`, `budgetbee`, `kardtrust`) y dashboards internos.
+- **Astro 5.x:** Se utiliza para sitios estáticos de alto rendimiento donde la hidratación de React no es estrictamente necesaria (`mejoresfinanzas`, sitio corporativo).
+- **React 19.x:** Impulsa componentes interactivos, herramientas internas y el Arbitrage Manager Dashboard.
+
+## Lenguajes y Estilos
+- **TypeScript (Strict Mode):** Obligatorio en todas las aplicaciones Next.js, Node.js y React.
+- **Python:** Impulsa el backend FastAPI para el Arbitrage Manager Dashboard y pipelines de datos.
+- **Tailwind CSS v3.4/v4.x:** Framework CSS basado en utilidades para un desarrollo ágil de UI.
+- **shadcn/ui & Radix UI:** Componentes accesibles, personalizables y sin estilos predeterminados utilizados para construir el sistema de diseño.
+
+## Inteligencia Artificial y Machine Learning
+- **Google Vertex AI (Gemini 2.5 Flash):** LLM principal para la generación automatizada de contenido, generación de correos electrónicos (`EmailGenius`) y textos para redes sociales (`SocialMediaGenius`).
+- **Google Generative AI SDK & MCP SDK:** Para el acceso programático al modelo y automatización de despliegues.
+
+## Bases de Datos y Almacenamiento
+- **PostgreSQL (driver pg):** Datos transaccionales, autenticación, historial de envíos de correo (Cloud SQL).
+- **Google BigQuery:** Data warehouse para analíticas, clasificaciones de IVT (Tráfico Inválido) y rendimiento de campañas.
+- **Supabase:** PostgreSQL gestionado y autenticación utilizado en `RouteGenius` y otras herramientas internas.
+
+## Autenticación y Seguridad
+- **NextAuth v5 / Better Auth:** Capas de autenticación principales para las aplicaciones Next.js.
+- **Firebase Auth / Google OAuth:** Autenticación secundaria para herramientas operativas internas.
+
+## Ad-Tech y Monetización
+- **TopAds:** Red de anuncios patentada que sirve muros de ofertas personalizados impulsados por GPT.
+- **System1:** Integración de arbitraje de búsqueda para monetización contextual.
+- **Google Publisher Tags:** Integración de anuncios de display.
+
+## Infraestructura en la Nube (GCP)
+Todas las cargas de trabajo de producción se ejecutan en Google Cloud Platform (`us-central1`).
+- **Compute Engine:** Aloja el servidor de producción PM2 + proxy inverso Apache.
+- **Cloud Run:** Contenedores sin servidor para los backends de FastAPI.
+- **Cloud Storage:** CDN de medios (`media-topfinanzas-com`).
+- **Cloud Armor:** Protección DDoS y mitigación de bots.
+- **Pub/Sub & Cloud Functions:** Pipelines en tiempo real (por ejemplo, clasificación IVT).
+- **Cloud DNS:** Gestión de dominios.
+
+## DevOps y Herramientas
+- **PM2:** Gestión de procesos Node.js en máquinas virtuales (VMs).
+- **Docker / Docker Compose:** Contenerización para TopAds y desarrollo local.
+- **Git:** Modelo de ramas de funcionalidades (`dev` → `main` → ramas de respaldo).
+- **Google Tag Manager & Google Analytics 4:** Analíticas, seguimiento y atribución.
+
+
+
+--- ROUTE: /es/utilities ---
+
+# Funciones y Utilidades Compartidas
+
+Los repositorios de código de TopNetworks comparten un conjunto de patrones de utilidad comunes para manejar el formato, el seguimiento, el enrutamiento y las interacciones con APIs.
+
+## Seguimiento UTM y Atribución
+
+Un componente crítico del ciclo de arbitraje es garantizar que cada sesión se rastree desde la adquisición hasta la conversión.
+- **Estructura UTM:** `[country]_tf_[platform]_broad`
+  - Ejemplo: `us_tf_meta_broad`
+- **Funciones de Utilidad:** Funciones para analizar, persistir y agregar parámetros UTM a todos los enlaces de salida de CPA.
+
+## Utilidades de Formato
+
+- **Formato de Moneda:** `formatCurrency(amount, currencyCode)` para manejar correctamente USD, GBP y MXN basándose en la configuración regional activa.
+- **Formato de Fecha:** Utilidades estandarizadas para el formato de fechas utilizando la función nativa `Intl.DateTimeFormat`.
+- **Manipulación de Cadenas:** Utilidades para generar slugs compatibles con URLs y formatear texto para mostrarlo en la interfaz de usuario.
+
+## Integración de Analíticas
+
+- **GTM (Google Tag Manager):** Utilidades estandarizadas para enviar datos a dataLayer (dataLayer push) para realizar un seguimiento de las vistas de página, envíos de leads y clics salientes.
+- **Google Analytics 4:** Wrappers (envoltorios) para el seguimiento de eventos.
+
+## Utilidades en la Nube y API
+
+- **Google Cloud Storage:** Utilidades para generar URLs firmadas o leer activos directamente desde el bucket `media-topfinanzas-com`.
+- **Registro de BigQuery (Logging):** Funciones para registrar asincrónicamente señales de IVT (Tráfico Inválido) y métricas de sesión.
+
+## Wrappers de Generación con IA
+
+Para herramientas internas como `EmailGenius` y `SocialMediaGenius`, encapsulamos las bibliotecas `@google/genai` y `@modelcontextprotocol/sdk`:
+- **Constructores de Prompt Engineering:** Utilidades para ensamblar el contexto, las reglas y las variables de entrada en prompts estructurados para Gemini 2.5 Flash.
+- **Analizadores de Respuesta (Parsers):** Funciones para validar y analizar la salida JSON estructurada de los LLMs utilizando Zod.
+
+
+
+--- ROUTE: /es/workflows ---
+
+# Procesos y Flujos de Trabajo
+
+## Ciclo de Vida del Desarrollo Local
+
+1. **Ramificación (Branching):** `dev` es la rama de desarrollo local para cada propiedad sincronizada. Todo el trabajo de nuevas características debe completarse en la rama `dev`.
+2. **Orquestación de Sincronización:** La habilidad (skill) `topnetworks-sync-orchestrator` gestiona la paridad de múltiples repositorios (SEO/GEO, componentes compartidos) en las cuatro propiedades principales sin comprometer la localización específica del mercado.
+3. **Preparación de Despliegue:** El estado aprobado de la funcionalidad se fusiona/sincroniza localmente con `main` y se sube al origen (push a origin). El árbol de trabajo local siempre debe volver a la rama `dev` después de la sincronización.
+
+## Flujo de Trabajo de Despliegue
+
+1. **Pre-vuelo Local (Local Preflight):** Ejecutar `scripts/topnetworks-deploy.mjs preflight --execute` para auditar los scripts de git/despliegue y ejecutar la validación.
+2. **Flujo de Trabajo Git:** Ejecutar `bash ./scripts/git-workflow.sh "$(cat lib/documents/commit-message.txt)"` localmente para enviar los cambios a la rama `main`.
+3. **Actualización Remota:** El script de despliegue en el lado del servidor (`scripts/deploy_update.sh`) opera estrictamente en el servidor remoto (`34.45.27.247`), descargando los últimos cambios de `main` desde el origen, construyendo la aplicación y reiniciando PM2.
+   - Los directorios remotos se mapean a los proyectos locales:
+     - `topfinanzas-us-next` -> `/var/www/html/topfinanzas-us-next`
+     - `uk-topfinanzas-com` -> `/var/www/html/uk`
+     - `topfinanzas-mx-next` -> `/var/www/html/topfinanzas-mx-next`
+     - `budgetbee-next` -> `/var/www/html/budgetbee-next`
+
+## Gestión de Campañas de Arbitraje
+
+1. **Lanzamiento de Campaña:** Las campañas de tráfico pago se lanzan dirigidas a verticales específicas (ej. tarjetas de crédito) con límites estrictos de CPA.
+2. **Monitoreo de Spread:** El Arbitrage Manager Dashboard evalúa constantemente el Spread (`Ingresos por Sesión - Costo por Sesión`) cada hora.
+3. **Acciones de Optimización:** Si los spreads se comprimen, el enrutamiento del tráfico se ajusta dinámicamente o las campañas se pausan automáticamente para evitar un ROI negativo.
+
+## Generación de Contenido y Correo Electrónico
+
+1. **Resúmenes de Contenido (Briefs):** Definidos utilizando el manual de jugadas (playbook) de TopNetworks.
+2. **Generación:** Vertex AI genera el primer borrador a través de `EmailGenius` o `SocialMediaGenius`.
+3. **Revisión y Despacho:** El contenido es revisado, aprobado y despachado (por ejemplo, a través de ActiveCampaign o ConvertKit).
+
+

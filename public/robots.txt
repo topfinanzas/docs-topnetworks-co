@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Allow AI Bots to crawl documentation explicitly
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Applebot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Direct AI Agents to the optimized context files
+# Check /llms.txt for structured endpoints and /llms-full.txt for complete RAG context.
