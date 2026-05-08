@@ -76,7 +76,11 @@ export default function DocPage({ pageId: propPageId }: { pageId?: string }) {
           li: ({node, ...props}) => <li className="" {...props} />,
           a: ({node, href, ...props}) => {
             // Automatically prepend the language prefix to internal root-relative links
-            const targetHref = href?.startsWith('/') ? `/${lang}${href}` : href;
+            let targetHref = href;
+            if (href?.startsWith('/') && !href.startsWith(`/${lang}/`) && href !== `/${lang}`) {
+               // Need to handle root / vs /page
+               targetHref = href === '/' ? `/${lang}` : `/${lang}${href}`;
+            }
             return <a href={targetHref} className="text-brand-blue-600 hover:text-brand-blue-800 underline transition-colors" {...props} />;
           },
           code: ({node, className, children, ...props}) => {
