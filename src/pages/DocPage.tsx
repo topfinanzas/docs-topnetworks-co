@@ -74,7 +74,11 @@ export default function DocPage({ pageId: propPageId }: { pageId?: string }) {
           ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-4 space-y-2 text-gray-600" {...props} />,
           ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-4 space-y-2 text-gray-600" {...props} />,
           li: ({node, ...props}) => <li className="" {...props} />,
-          a: ({node, ...props}) => <a className="text-brand-blue-600 hover:text-brand-blue-800 underline transition-colors" {...props} />,
+          a: ({node, href, ...props}) => {
+            // Automatically prepend the language prefix to internal root-relative links
+            const targetHref = href?.startsWith('/') ? `/${lang}${href}` : href;
+            return <a href={targetHref} className="text-brand-blue-600 hover:text-brand-blue-800 underline transition-colors" {...props} />;
+          },
           code: ({node, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');
             const isInline = !match && !className?.includes('language-');
