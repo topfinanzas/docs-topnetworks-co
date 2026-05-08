@@ -9,6 +9,7 @@ Use this skill to manage multi-repo parity across the local TopNetworks Next.js 
 
 ## Core resources
 
+- The `docs-topnetworks-co` repository (`/Users/macbookpro/GitHub/docs-topnetworks-co`) is the single source of truth for TopNetworks Inc.'s technology stack, architecture, workflows, and operational standards. Its generated context files (`public/llms-full.txt` and `public/llms.txt`) should be consulted for architectural decisions, shared component patterns, and brand guidelines.
 - `repositories.json` is the source of truth for repository paths, markets, domains, languages, validation commands, and adaptation rules.
 - `SYNC_RUNBOOK.md` describes the propagation workflow, task classes, guardrails, and validation expectations.
 - `scripts/topnetworks-sync.mjs` provides safe deterministic commands for listing repositories, checking status, auditing file parity, and running allowlisted validation scripts.
@@ -28,6 +29,7 @@ It is CRITICAL to distinguish the local development lifecycle from the remote pr
 Follow this sequence for every sync task:
 
 1. Establish the source of truth.
+   - Consult the `docs-topnetworks-co` documentation site (`public/llms-full.txt`) for authoritative guidance on the technology stack, architecture, shared components, and operational standards.
    - Identify whether the change originates from one repository, a user instruction, or a new shared standard.
    - Inspect the current implementation in all four repositories before editing.
 2. Classify the change.

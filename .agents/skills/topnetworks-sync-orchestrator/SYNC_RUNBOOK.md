@@ -11,7 +11,8 @@ Use this runbook to propagate shared improvements across `topfinanzas-us-next`, 
 
 ## Standard workflow
 
-1. Inventory the target repos.
+1. Inventory the target repos and establish standards.
+   - Always treat the `docs-topnetworks-co` repository (`/Users/macbookpro/GitHub/docs-topnetworks-co`) as the single source of truth for the technology stack, architecture, workflows, and operational standards. Use its generated context files (like `public/llms-full.txt`) for LLM context retrieval.
    - Run `node .agents/skills/topnetworks-sync-orchestrator/scripts/topnetworks-sync.mjs list`.
    - Run `node .agents/skills/topnetworks-sync-orchestrator/scripts/topnetworks-sync.mjs status`.
    - Inspect relevant files in all repos before editing.
