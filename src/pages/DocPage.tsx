@@ -78,6 +78,21 @@ export default function DocPage({ pageId: propPageId }: { pageId?: string }) {
           code: ({node, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');
             const isInline = !match && !className?.includes('language-');
+            
+            // Render color swatch for hex colors if inline
+            if (isInline && typeof children === 'string' && /^#([0-9A-Fa-f]{3}){1,2}$/.test(children)) {
+              return (
+                <code className="bg-gray-100 text-brand-blue-700 px-1.5 py-0.5 rounded text-sm font-mono inline-flex items-center gap-1.5" {...props}>
+                  <span 
+                    className="inline-block w-3 h-3 rounded-sm border border-gray-300" 
+                    style={{ backgroundColor: children }}
+                    aria-hidden="true"
+                  />
+                  {children}
+                </code>
+              );
+            }
+
             return isInline ? (
               <code className="bg-gray-100 text-brand-blue-700 px-1.5 py-0.5 rounded text-sm font-mono" {...props}>{children}</code>
             ) : (
