@@ -1,18 +1,18 @@
 {
   "version": "1.0.0",
   "workspaceRoot": "/Users/macbookpro/GitHub",
-  \"scope\": \"TopNetworks synchronized Next.js financial properties\",
-  \"documentation\": {
-    \"name\": \"TopNetworks Documentation\",
-    \"path\": \"/Users/macbookpro/GitHub/docs-topnetworks-co\",
-    \"contextFiles\": [
-      \"public/llms-full.txt\",
-      \"public/llms.txt\",
-      \"public/agent-index.json\"
+  "scope": "TopNetworks synchronized Next.js financial properties",
+  "documentation": {
+    "name": "TopNetworks Documentation",
+    "path": "/Users/macbookpro/GitHub/docs-topnetworks-co",
+    "contextFiles": [
+      "public/llms-full.txt",
+      "public/llms.txt",
+      "public/agent-index.json"
     ],
-    \"description\": \"Single source of truth for technology stack, architecture, workflows, and operational standards.\"
+    "description": "Single source of truth for technology stack, architecture, workflows, and operational standards."
   },
-  \"repositories\": [
+  "repositories": [
     {
       "id": "topfinanzas-us",
       "name": "TopFinanzas US",
