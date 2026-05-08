@@ -1,0 +1,23 @@
+{
+  "skill_name": "topnetworks-sync-orchestrator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Propagate the SEO metadata helper pattern from TopFinanzas UK to TopFinanzas US, TopFinanzas MX, and BudgetBee while keeping each domain, locale, and brand correct.",
+      "expected_output": "A propagation matrix, localized implementation steps, and validation plan across all four repositories.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Check whether the four TopNetworks Next.js properties have parity for robots, sitemap, llms.txt, JSON-LD rendering, and SEO registry files.",
+      "expected_output": "A parity report identifying present and missing shared architecture files by repository.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Run safe validation across the TopNetworks Next.js sites without deploying or committing anything.",
+      "expected_output": "Dry-run or explicitly approved validation commands limited to allowlisted scripts, with no git push or deployment side effects.",
+      "files": []
+    }
+  ]
+}

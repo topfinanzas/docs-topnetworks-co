@@ -1,0 +1,185 @@
+{
+  "version": "1.0.0",
+  "workspaceRoot": "/Users/macbookpro/GitHub",
+  "scope": "TopNetworks synchronized Next.js financial properties",
+  "repositories": [
+    {
+      "id": "topfinanzas-us",
+      "name": "TopFinanzas US",
+      "path": "/Users/macbookpro/GitHub/topfinanzas-us-next",
+      "packageManager": "npm",
+      "framework": "Next.js App Router",
+      "brand": "TopFinanzas",
+      "market": "United States",
+      "language": "English (en-US)",
+      "locale": "en-US",
+      "currency": "USD",
+      "domain": "https://us.topfinanzas.com",
+      "productionPort": 3040,
+      "compliance": [
+        "US federal and state financial advertising standards",
+        "CCPA",
+        "TILA disclosure requirements where applicable"
+      ],
+      "gitWorkflowScript": "scripts/git-workflow.sh",
+      "deploymentScript": "scripts/deploy_update.sh",
+      "validationCommands": [
+        "npm run lint",
+        "npm run build"
+      ],
+      "allowlistedScripts": [
+        "lint",
+        "build",
+        "format",
+        "verify:requirements",
+        "test:brevo",
+        "test:brevo-direct",
+        "test:brevo-api",
+        "test:activecampaign"
+      ],
+      "adaptationRules": [
+        "Use US spelling, en-US metadata, USD currency, and us.topfinanzas.com canonical URLs.",
+        "Preserve TopFinanzas blue/cyan/lime brand identity.",
+        "Use US-market financial terminology and disclosures.",
+        "Treat this repository as the usual baseline for shared SEO and financial comparison architecture, but verify file parity before copying."
+      ]
+    },
+    {
+      "id": "topfinanzas-uk",
+      "name": "TopFinanzas UK",
+      "path": "/Users/macbookpro/GitHub/uk-topfinanzas-com",
+      "packageManager": "npm",
+      "framework": "Next.js App Router",
+      "brand": "TopFinanzas",
+      "market": "United Kingdom",
+      "language": "English (en-GB)",
+      "locale": "en-GB",
+      "currency": "GBP",
+      "domain": "https://uk.topfinanzas.com",
+      "productionPort": 3004,
+      "compliance": [
+        "FCA financial promotions standards",
+        "GDPR",
+        "UK consumer credit advertising requirements"
+      ],
+      "gitWorkflowScript": "scripts/git-workflow.sh",
+      "deploymentScript": "scripts/deploy_update.sh",
+      "validationCommands": [
+        "npm run lint",
+        "npm run build"
+      ],
+      "allowlistedScripts": [
+        "lint",
+        "build",
+        "format",
+        "test:brevo",
+        "test:brevo-direct",
+        "test:brevo-api"
+      ],
+      "adaptationRules": [
+        "Use UK spelling, en-GB metadata, GBP currency, and uk.topfinanzas.com canonical URLs.",
+        "Preserve FCA-aware disclosure language and UK financial terminology.",
+        "Do not replace UK routes, examples, advertisers, or representative APR wording with US copy.",
+        "Preserve TopFinanzas blue/cyan/lime brand identity."
+      ]
+    },
+    {
+      "id": "topfinanzas-mx",
+      "name": "TopFinanzas MX",
+      "path": "/Users/macbookpro/GitHub/topfinanzas-mx-next",
+      "packageManager": "npm",
+      "framework": "Next.js App Router",
+      "brand": "TopFinanzas",
+      "market": "Mexico",
+      "language": "Spanish (es-MX)",
+      "locale": "es-MX",
+      "currency": "MXN",
+      "domain": "https://topfinanzas.com/mx",
+      "productionPort": 3030,
+      "compliance": [
+        "CONDUSEF-aware content standards",
+        "PROFECO-aware advertising standards",
+        "Mexico financial product disclosure expectations"
+      ],
+      "gitWorkflowScript": "scripts/git-workflow.sh",
+      "deploymentScript": "scripts/deploy_update.sh",
+      "validationCommands": [
+        "npm run lint",
+        "npm run build"
+      ],
+      "allowlistedScripts": [
+        "lint",
+        "build",
+        "format",
+        "test:brevo",
+        "test:brevo-direct",
+        "test:brevo-api"
+      ],
+      "adaptationRules": [
+        "Use Spanish es-MX copy, MXN currency, and topfinanzas.com/mx canonical URLs.",
+        "Preserve Spanish route families such as soluciones-financieras and finanzas-personales.",
+        "Do not replace CAT, tarjeta de crédito, or Mexico-specific compliance language with US or UK terminology.",
+        "Preserve TopFinanzas blue/cyan/lime brand identity."
+      ]
+    },
+    {
+      "id": "budgetbee",
+      "name": "BudgetBee",
+      "path": "/Users/macbookpro/GitHub/budgetbee-next",
+      "packageManager": "npm",
+      "framework": "Next.js App Router",
+      "brand": "BudgetBee",
+      "market": "United States",
+      "language": "English (en-US)",
+      "locale": "en-US",
+      "currency": "USD",
+      "domain": "https://budgetbeepro.com",
+      "productionPort": 3007,
+      "compliance": [
+        "US federal and state financial advertising standards",
+        "TILA disclosure requirements where applicable"
+      ],
+      "gitWorkflowScript": "scripts/git-workflow.sh",
+      "deploymentScript": "scripts/deploy_update.sh",
+      "validationCommands": [
+        "npm run lint",
+        "npm run build"
+      ],
+      "allowlistedScripts": [
+        "lint",
+        "build",
+        "format",
+        "test:brevo",
+        "test:brevo-direct",
+        "test:brevo-api"
+      ],
+      "adaptationRules": [
+        "Preserve BudgetBee gold/black/teal visual identity and bee/hive motifs.",
+        "Preserve the approachable Gen-Z and Millennial voice.",
+        "Use budgetbeepro.com canonical URLs and en-US metadata.",
+        "Do not replace BudgetBee brand copy, mascot references, or product positioning with TopFinanzas language."
+      ]
+    }
+  ],
+  "sharedArchitectureFiles": [
+    "app/robots.ts",
+    "app/sitemap.ts",
+    "components/seo/json-ld.tsx",
+    "lib/seo.ts",
+    "lib/seo-route-registry.ts",
+    "next.config.mjs",
+    "public/llms.txt",
+    "scripts/git-workflow.sh",
+    "scripts/sync-branches.sh",
+    "scripts/deploy_update.sh"
+  ],
+  "neverTouchPatterns": [
+    ".env",
+    ".env.*",
+    "**/.next/**",
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/*.log"
+  ]
+}
